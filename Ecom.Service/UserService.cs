@@ -18,7 +18,7 @@ namespace Ecom.Service
         public UserService(IConfiguration config)
         {
             _userRepository = new UserRepository();
-            config = _config;
+            config = _config;       
         }
         public bool Login(string email, string password)
         {
