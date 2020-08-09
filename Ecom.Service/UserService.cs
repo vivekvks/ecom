@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Ecom.Service
 {
-    public class UserService : IUserService
+    public class UserService : IUserService   
     {
         private readonly UserRepository _userRepository;
         private readonly IConfiguration _config;
