@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ecom.Authentication\Ecom.Authentication.csproj" />
+    <ProjectReference Include="..\Ecom.Data\Ecom.Data.csproj" />
+    <ProjectReference Include="..\Ecom.Models\Ecom.Models.csproj" />
+    <ProjectReference Include="..\Ecom.Utility\Ecom.Utility.csproj" />
+  </ItemGroup>
+
+</Project>
