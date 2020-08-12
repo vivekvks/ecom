@@ -8,6 +8,7 @@ namespace Ecom.API.Models
         public CategoryMaster()
         {
             CategoryAttributeMaster = new HashSet<CategoryAttributeMaster>();
+            CategoryVarianceDetails = new HashSet<CategoryVarianceDetails>();
             InverseParent = new HashSet<CategoryMaster>();
         }
 
@@ -17,6 +18,7 @@ namespace Ecom.API.Models
 
         public virtual CategoryMaster Parent { get; set; }
         public virtual ICollection<CategoryAttributeMaster> CategoryAttributeMaster { get; set; }
+        public virtual ICollection<CategoryVarianceDetails> CategoryVarianceDetails { get; set; }
         public virtual ICollection<CategoryMaster> InverseParent { get; set; }
     }
 }

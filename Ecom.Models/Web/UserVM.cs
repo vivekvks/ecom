@@ -9,11 +9,9 @@ namespace Ecom.Models.Web
     {
         [Required]
         [MinLength(8)]
-
         public string Password { get; set; }
 
         [Required]
-        [RegularExpression("^[a-zA-Z0-9]+$")]
         public string UserName { get; set; }
 
         public bool IsEmail { get; set; } = false;

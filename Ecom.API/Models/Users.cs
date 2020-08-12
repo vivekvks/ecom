@@ -7,6 +7,7 @@ namespace Ecom.API.Models
     {
         public Users()
         {
+            ProductListing = new HashSet<ProductListing>();
             UserRoles = new HashSet<UserRoles>();
         }
 
@@ -18,6 +19,7 @@ namespace Ecom.API.Models
         public string LastName { get; set; }
         public bool IsActive { get; set; }
 
+        public virtual ICollection<ProductListing> ProductListing { get; set; }
         public virtual ICollection<UserRoles> UserRoles { get; set; }
     }
 }

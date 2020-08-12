@@ -1,5 +1,6 @@
 ﻿using Ecom.Authentication;
 using Ecom.Data;
+using Ecom.Data.Implementation;
 using Ecom.Models.Web;
 using Ecom.Models.Web.Response;
 using Ecom.Service.Interface;
@@ -10,15 +11,18 @@ using System.Text;
 
 namespace Ecom.Service
 {
-    public class UserService : IUserService   
+    public class UserService : IUserService
     {
         private readonly UserRepository _userRepository;
         private readonly IConfiguration _config;
 
+        private readonly GenericRepository<UserVM> genericRepository;
+
         public UserService(IConfiguration config)
         {
             _userRepository = new UserRepository();
-            config = _config;       
+            genericRepository = new GenericRepository<UserVM>("Users");
+            config = _config;
         }
         public bool Login(string email, string password)
         {
@@ -42,8 +46,10 @@ namespace Ecom.Service
 
         }
 
-        public Response<LoginResponse> Register(UserVM user)
+        public async System.Threading.Tasks.Task<Response<LoginResponse>> RegisterAsync(UserVM user)
         {
+
+            var data = await genericRepository.GetAllAsync();
 
             var userObj = new Data.Models.Users();
 
@@ -67,7 +73,7 @@ namespace Ecom.Service
 
             }
 
-            return new Response<LoginResponse>()
+            return new  Response<LoginResponse>()
             {
                 Data = new LoginResponse
                 {
@@ -79,11 +85,6 @@ namespace Ecom.Service
                     }, _config)
                 }
             };
-        }
-
-        bool IUserService.Register(UserVM user)
-        {
-            throw new NotImplementedException();
         }
     }
 }
