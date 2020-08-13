@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Ecom.Data;
+using Ecom.Data.Interface;
+using Ecom.Service;
+using Ecom.Service.Interface;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +17,8 @@ namespace Ecom.API
     {
         public static void AddCustomServices(this IServiceCollection services)
         {
-
+            services.AddScoped<ICategoryMasterService, CategoryMasterService>();
+            services.AddScoped<ICategoryMasterRepository, Ecom.Data.Implementation.DBRepo.CategoryMasterRepository>();
         }
     }
 }

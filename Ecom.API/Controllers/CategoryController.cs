@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Ecom.Authentication;
+using Ecom.Service.Interface;
 using Ecom.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,35 +17,39 @@ namespace Ecom.API.Controllers
     public class CategoryController : Controller
     {
         private readonly ConfigurationOption _configuration;
-        public CategoryController(IOptions<ConfigurationOption> options)
+        private readonly ICategoryMasterService _categoryMasterService;
+        public CategoryController(IOptions<ConfigurationOption> options,
+            ICategoryMasterService categoryMasterService)
         {
             _configuration = options.Value;
+            _categoryMasterService = categoryMasterService;
         }
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            var category = await _categoryMasterService.Get();
+            return category;
         }
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
         [HttpPost]
-       
+
         public string Get(int id)
         {
             return "value";
         }
 
         // POST api/<controller>
-       
-        public void Post([FromBody]string value)
+
+        public void Post([FromBody] string value)
         {
         }
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody] string value)
         {
         }
 
