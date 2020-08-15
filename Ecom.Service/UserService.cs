@@ -1,6 +1,7 @@
 ﻿using Ecom.Authentication;
 using Ecom.Data;
 using Ecom.Data.Implementation;
+using Ecom.Data.Implementation.DBRepo;
 using Ecom.Models.Web;
 using Ecom.Models.Web.Response;
 using Ecom.Service.Interface;
@@ -13,20 +14,20 @@ namespace Ecom.Service
 {
     public class UserService : IUserService
     {
-        private readonly UserRepository _userRepository;
+        private readonly Data.Implementation.DBRepo.UserRepository _userRepository;
         private readonly IConfiguration _config;
 
         private readonly GenericRepository<UserVM> genericRepository;
 
         public UserService(IConfiguration config)
         {
-            _userRepository = new UserRepository();
-            genericRepository = new GenericRepository<UserVM>("Users");
+            _userRepository = new Data.Implementation.DBRepo.UserRepository();
+          
             config = _config;
         }
         public bool Login(string email, string password)
         {
-            var data = _userRepository.GetUserByEmail(email);
+           // var data = _userRepository.GetUserByEmail(email);
 
             if (data != null)
             {

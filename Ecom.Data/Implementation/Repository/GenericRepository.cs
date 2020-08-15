@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Ecom.Data.Interface;
+using Ecom.Data.Models.SPModels;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,11 @@ using System.Threading.Tasks;
 
 namespace Ecom.Data.Implementation
 {
+    public sealed class FunctionParameter
+    {
+        public string name { get; set; }
+        public object value { get; set; }
+    }
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly string _tableName;
@@ -46,14 +52,14 @@ namespace Ecom.Data.Implementation
                 return await connection.QueryAsync<T>($"SELECT * FROM {_tableName}");
             }
         }
-        public async Task DeleteRowAsync(Guid id)
+        public async Task DeleteRowAsync(int id)
         {
             using (var connection = CreateConnection())
             {
                 await connection.ExecuteAsync($"DELETE FROM {_tableName} WHERE Id=@Id", new { Id = id });
             }
         }
-        public async Task<T> GetAsync(Guid id)
+        public async Task<T> GetAsync(int id)
         {
             using (var connection = CreateConnection())
             {
@@ -130,5 +136,77 @@ namespace Ecom.Data.Implementation
             updateQuery.Append(" WHERE Id=@Id");
             return updateQuery.ToString();
         }
+
+        private DynamicParameters GenerateSPParameter(BaseSP baseSP)
+        {
+
+        }
+
+        public List<T> ExecResult(string spName, BaseSP _listParameters)
+        {
+            using (var connection = CreateConnection())
+            {
+                List<T> list = new List<T>();
+
+                DynamicParameters parameters = new DynamicParameters();
+                if (_listParameters.Count() > 0)
+                {
+                    foreach (var item in _listParameters)
+                    {
+                        parameters.Add(item.name, item.value);
+                    }
+                }
+                connection.Open();
+                try
+                {
+                    var registro = SqlMapper.Query<T>(connection, spName, parameters, commandType: CommandType.StoredProcedure);
+                    if (registro.Count() > 1)
+                        list = registro.ToList();
+                    else
+                        list.Add(registro.First());
+                }
+                catch (Exception e)
+                {
+                    //ILog log_ = log4net.LogManager.GetLogger("log4Net");
+                    //log_.Error(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType + "-" + System.Reflection.MethodBase.GetCurrentMethod().ToString() + "-" + e.Message + "-SOURCE: " + e.Source);
+
+                }
+                finally
+                {
+                    connection.Close();
+                }
+                return list;
+            }
+        }
+
+        public void Exec(string funcName,params FunctionParameter[] _listParameters)
+        {
+            using (var connection = CreateConnection())
+            {
+                DynamicParameters parameters = new DynamicParameters();
+
+                if (_listParameters.Count() > 0)
+                {
+                    foreach (var item in _listParameters)
+                    {
+                        parameters.Add(item.name, item.value);
+                    }
+                }
+                connection.Open();
+                try
+                {
+                    var registro = connection.Execute(funcName, parameters, commandType: CommandType.StoredProcedure);
+                }
+                catch
+                {
+
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
     }
 }
