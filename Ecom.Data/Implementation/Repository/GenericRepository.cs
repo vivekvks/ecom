@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using Ecom.Data.Interface;
-using Ecom.Data.Models.SPModels;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -13,11 +12,6 @@ using System.Threading.Tasks;
 
 namespace Ecom.Data.Implementation
 {
-    public sealed class FunctionParameter
-    {
-        public string name { get; set; }
-        public object value { get; set; }
-    }
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly string _tableName;
@@ -174,20 +168,18 @@ namespace Ecom.Data.Implementation
                 return list;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="funcName"></param>
+        /// <param name="requestModel"></param>
+        /// <typeparam name="RequestModel"></typeparam>
 
-        public void Exec(string funcName, params FunctionParameter[] _listParameters)
+        public void Exec<RequestModel>(string funcName, RequestModel requestModel)
         {
             using (var connection = CreateConnection())
             {
-                DynamicParameters parameters = new DynamicParameters();
-
-                if (_listParameters.Count() > 0)
-                {
-                    foreach (var item in _listParameters)
-                    {
-                        parameters.Add(item.name, item.value);
-                    }
-                }
+                DynamicParameters parameters = GetParameters(requestModel);
                 connection.Open();
                 try
                 {
