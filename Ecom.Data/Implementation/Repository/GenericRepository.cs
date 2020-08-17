@@ -46,14 +46,14 @@ namespace Ecom.Data.Implementation
                 return await connection.QueryAsync<T>($"SELECT * FROM {_tableName}");
             }
         }
-        public async Task DeleteRowAsync(Guid id)
+        public async Task DeleteRowAsync(int id)
         {
             using (var connection = CreateConnection())
             {
                 await connection.ExecuteAsync($"DELETE FROM {_tableName} WHERE Id=@Id", new { Id = id });
             }
         }
-        public async Task<T> GetAsync(Guid id)
+        public async Task<T> GetAsync(int id)
         {
             using (var connection = CreateConnection())
             {
@@ -130,5 +130,93 @@ namespace Ecom.Data.Implementation
             updateQuery.Append(" WHERE Id=@Id");
             return updateQuery.ToString();
         }
+
+
+        /// <summary>
+        /// Execute the Given SP with the Parameter and return a List.
+        /// </summary>
+        /// <typeparam name="RequestModel"></typeparam>
+        /// <param name="spName"></param>
+        /// <param name="requestModel"></param>
+        /// <returns></returns>
+        public List<T> ExecResult<RequestModel>(string spName, RequestModel requestModel)
+        {
+            using (var connection = CreateConnection())
+            {
+                List<T> list = new List<T>();
+                DynamicParameters spParameters = GetParameters(requestModel);
+
+                connection.Open();
+                try
+                {
+                    var registro = SqlMapper.Query<T>(connection, spName, spParameters, commandType: CommandType.StoredProcedure);
+                    if (registro.Count() > 1)
+                        list = registro.ToList();
+                    else
+                        list.Add(registro.First());
+                }
+                catch (Exception e)
+                {
+                    //ILog log_ = log4net.LogManager.GetLogger("log4Net");
+                    //log_.Error(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType + "-" + System.Reflection.MethodBase.GetCurrentMethod().ToString() + "-" + e.Message + "-SOURCE: " + e.Source);
+
+                }
+                finally
+                {
+                    connection.Close();
+                }
+                return list;
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="funcName"></param>
+        /// <param name="requestModel"></param>
+        /// <typeparam name="RequestModel"></typeparam>
+
+        public void Exec<RequestModel>(string funcName, RequestModel requestModel)
+        {
+            using (var connection = CreateConnection())
+            {
+                DynamicParameters parameters = GetParameters(requestModel);
+                connection.Open();
+                try
+                {
+                    var registro = connection.Execute(funcName, parameters, commandType: CommandType.StoredProcedure);
+                }
+                catch
+                {
+
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        #region Private
+
+        /// <summary>
+        /// Gets the DynamicParameter in return for the Model Passed.
+        /// </summary>
+        /// <typeparam name="RequestModel">Generic Type, in Almost Cased will be a Interface Ref.</typeparam>
+        /// <param name="requestModel">SP Request Model to be Converted</param>
+        /// <returns></returns>
+        private DynamicParameters GetParameters<RequestModel>(RequestModel requestModel)
+        {
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            Type type = requestModel.GetType();
+            PropertyInfo[] properties = type.GetProperties();
+            for (int i = 0; i < properties.Length; i++)
+            {
+                dynamicParameters.Add(properties[i].Name, properties[i].GetValue(requestModel));
+            }
+            return dynamicParameters;
+        }
+
+        #endregion
+
     }
 }

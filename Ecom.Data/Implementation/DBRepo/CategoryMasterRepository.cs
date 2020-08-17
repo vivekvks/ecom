@@ -1,8 +1,5 @@
 ﻿using Ecom.Data.Interface;
 using Ecom.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Ecom.Data.Implementation.DBRepo
@@ -13,10 +10,6 @@ namespace Ecom.Data.Implementation.DBRepo
         {
 
         }
-        public async Task<string> Get()
-        {
-            var data = await base.GetAllAsync();
-            return "test";
-        }
+       
     }
 }

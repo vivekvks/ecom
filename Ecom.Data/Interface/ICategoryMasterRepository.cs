@@ -7,6 +7,6 @@ namespace Ecom.Data.Interface
 {
     public interface ICategoryMasterRepository
     {
-        Task<string> Get();
+       
     }
 }
