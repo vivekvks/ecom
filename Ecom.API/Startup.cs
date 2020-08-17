@@ -32,6 +32,11 @@ namespace Ecom.API
         {
             services.Configure<ConfigurationOption>(Configuration);
 
+            ConnectionStringHelper.EComDatabase = Configuration.GetConnectionString("EComDatabase");
+
+            var configuration = new ConfigurationOption();
+            Configuration.Bind(configuration);
+
             services.AddControllers();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -45,9 +50,9 @@ namespace Ecom.API
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = Configuration["Jwt:Issuer"],
-                    ValidAudience = Configuration["Jwt:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SecretKey"])),
+                    ValidIssuer = configuration.Jwt.Issuer,
+                    ValidAudience = configuration.Jwt.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.Jwt.SecretKey)),
                     ClockSkew = TimeSpan.Zero
                 };
             });
