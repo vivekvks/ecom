@@ -137,29 +137,25 @@ namespace Ecom.Data.Implementation
             return updateQuery.ToString();
         }
 
-        private DynamicParameters GenerateSPParameter(BaseSP baseSP)
-        {
 
-        }
-
-        public List<T> ExecResult(string spName, BaseSP _listParameters)
+        /// <summary>
+        /// Execute the Given SP with the Parameter and return a List.
+        /// </summary>
+        /// <typeparam name="RequestModel"></typeparam>
+        /// <param name="spName"></param>
+        /// <param name="requestModel"></param>
+        /// <returns></returns>
+        public List<T> ExecResult<RequestModel>(string spName, RequestModel requestModel)
         {
             using (var connection = CreateConnection())
             {
                 List<T> list = new List<T>();
+                DynamicParameters spParameters = GetParameters(requestModel);
 
-                DynamicParameters parameters = new DynamicParameters();
-                if (_listParameters.Count() > 0)
-                {
-                    foreach (var item in _listParameters)
-                    {
-                        parameters.Add(item.name, item.value);
-                    }
-                }
                 connection.Open();
                 try
                 {
-                    var registro = SqlMapper.Query<T>(connection, spName, parameters, commandType: CommandType.StoredProcedure);
+                    var registro = SqlMapper.Query<T>(connection, spName, spParameters, commandType: CommandType.StoredProcedure);
                     if (registro.Count() > 1)
                         list = registro.ToList();
                     else
@@ -179,7 +175,7 @@ namespace Ecom.Data.Implementation
             }
         }
 
-        public void Exec(string funcName,params FunctionParameter[] _listParameters)
+        public void Exec(string funcName, params FunctionParameter[] _listParameters)
         {
             using (var connection = CreateConnection())
             {
@@ -207,6 +203,28 @@ namespace Ecom.Data.Implementation
                 }
             }
         }
+
+        #region Private
+
+        /// <summary>
+        /// Gets the DynamicParameter in return for the Model Passed.
+        /// </summary>
+        /// <typeparam name="RequestModel">Generic Type, in Almost Cased will be a Interface Ref.</typeparam>
+        /// <param name="requestModel">SP Request Model to be Converted</param>
+        /// <returns></returns>
+        private DynamicParameters GetParameters<RequestModel>(RequestModel requestModel)
+        {
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            Type type = requestModel.GetType();
+            PropertyInfo[] properties = type.GetProperties();
+            for (int i = 0; i < properties.Length; i++)
+            {
+                dynamicParameters.Add(properties[i].Name, properties[i].GetValue(requestModel));
+            }
+            return dynamicParameters;
+        }
+
+        #endregion
 
     }
 }
