@@ -5,7 +5,7 @@ namespace Ecom.API.Models
 {
     public partial class CategoryVarianceDetails
     {
-        public int CategoryVarianceId { get; set; }
+        public int Id { get; set; }
         public int CategoryId { get; set; }
         public int VarianceMasterId { get; set; }
         public bool IsActive { get; set; }

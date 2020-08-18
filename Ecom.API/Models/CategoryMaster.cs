@@ -12,9 +12,10 @@ namespace Ecom.API.Models
             InverseParent = new HashSet<CategoryMaster>();
         }
 
-        public int CategoryId { get; set; }
+        public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }
+        public int? ReurnTypeId { get; set; }
 
         public virtual CategoryMaster Parent { get; set; }
         public virtual ICollection<CategoryAttributeMaster> CategoryAttributeMaster { get; set; }

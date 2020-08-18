@@ -10,7 +10,7 @@ namespace Ecom.API.Models
             ProductListing = new HashSet<ProductListing>();
         }
 
-        public int ImpoterId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
 

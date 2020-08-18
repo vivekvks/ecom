@@ -10,7 +10,7 @@ namespace Ecom.API.Models
             ListingVarianceDetails = new HashSet<ListingVarianceDetails>();
         }
 
-        public int VarianceValueId { get; set; }
+        public int Id { get; set; }
         public int VarianceId { get; set; }
         public string Value { get; set; }
         public bool IsActive { get; set; }
