@@ -14,4 +14,8 @@ namespace Ecom.Utility
         public string Issuer { get; set; }
         public string Audience { get; set; }
     }
+    public static class ConnectionStringHelper
+    {
+        public static string EComDatabase { get; set; }
+    }
 }
