@@ -9,6 +9,5 @@ namespace Ecom.Data.Implementation.Repository
         {
 
         }
-       
     }
 }

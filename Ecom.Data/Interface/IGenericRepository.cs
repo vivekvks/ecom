@@ -12,6 +12,6 @@ namespace Ecom.Data.Interface
         Task<T> GetAsync(int id);
         Task<int> SaveRangeAsync(IEnumerable<T> list);
         Task UpdateAsync(T t);
-        Task InsertAsync(T t);
+        Task<int> InsertAsync(T t);
     }
 }

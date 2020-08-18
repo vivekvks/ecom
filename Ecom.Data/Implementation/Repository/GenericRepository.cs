@@ -82,20 +82,24 @@ namespace Ecom.Data.Implementation
                     select prop.Name).ToList();
         }
 
-        public async Task InsertAsync(T t)
+        public async Task<int> InsertAsync(T t)
         {
             var insertQuery = GenerateInsertQuery();
+
+            insertQuery = $"{insertQuery}; SELECT CAST(SCOPE_IDENTITY() as int)";
             using (var connection = CreateConnection())
             {
-                await connection.ExecuteAsync(insertQuery, t);
+                return await connection.ExecuteScalarAsync<int>(insertQuery, t);
             }
         }
+
         private string GenerateInsertQuery()
         {
             var insertQuery = new StringBuilder($"INSERT INTO {_tableName} ");
 
             insertQuery.Append("(");
             var properties = GenerateListOfProperties(GetProperties);
+            properties = properties.Where(x => x != "Id").ToList();
             properties.ForEach(prop => { insertQuery.Append($"[{prop}],"); });
             insertQuery
                 .Remove(insertQuery.Length - 1, 1)

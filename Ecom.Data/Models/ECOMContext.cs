@@ -67,38 +67,16 @@ namespace Ecom.Data.Models
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.CategoryAttributeMaster)
-                    .HasForeignKey(d => d.CategoryId)
-                    .HasConstraintName("FK_CategoryAttributeMaster_CategoryMaster");
+              
             });
 
-            modelBuilder.Entity<CategoryMaster>(entity =>
-            {
-                entity.HasKey(e => e.CategoryId);
-
-                entity.Property(e => e.CategoryId).ValueGeneratedNever();
-
-                entity.Property(e => e.Name)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.Parent)
-                    .WithMany(p => p.InverseParent)
-                    .HasForeignKey(d => d.ParentId)
-                    .HasConstraintName("FK_CategoryMaster_CategoryMaster");
-            });
+            
 
             modelBuilder.Entity<CategoryVarianceDetails>(entity =>
             {
                 entity.HasKey(e => e.CategoryVarianceId);
 
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.CategoryVarianceDetails)
-                    .HasForeignKey(d => d.CategoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_CategoryVarianceDetails_CategoryMaster");
-
+              
                 entity.HasOne(d => d.VarianceMaster)
                     .WithMany(p => p.CategoryVarianceDetails)
                     .HasForeignKey(d => d.VarianceMasterId)
