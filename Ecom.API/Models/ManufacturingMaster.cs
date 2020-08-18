@@ -5,15 +5,10 @@ namespace Ecom.API.Models
 {
     public partial class ManufacturingMaster
     {
-        public ManufacturingMaster()
-        {
-            ProductListing = new HashSet<ProductListing>();
-        }
-
+        
         public int Id { get; set; }
         public string Name { get; set; }
         public string AddressLine { get; set; }
 
-        public virtual ICollection<ProductListing> ProductListing { get; set; }
     }
 }

@@ -5,11 +5,6 @@ namespace Ecom.API.Models
 {
     public partial class OfferMaster
     {
-        public OfferMaster()
-        {
-            OfferTerms = new HashSet<OfferTerms>();
-        }
-
         public int Id { get; set; }
         public int OfferTypeId { get; set; }
         public int ProductId { get; set; }
@@ -20,7 +15,5 @@ namespace Ecom.API.Models
         public double? SharePercentage { get; set; }
         public bool IsActive { get; set; }
 
-        public virtual ProductListing Product { get; set; }
-        public virtual ICollection<OfferTerms> OfferTerms { get; set; }
     }
 }

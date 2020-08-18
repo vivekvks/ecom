@@ -16,7 +16,5 @@ namespace Ecom.API.Models
         public int? ReportAbuse { get; set; }
         public int? Ratting { get; set; }
 
-        public virtual ProductListing ProductListing { get; set; }
-        public virtual Users User { get; set; }
     }
 }

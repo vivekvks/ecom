@@ -9,6 +9,5 @@ namespace Ecom.API.Models
         public int UserId { get; set; }
         public string Name { get; set; }
 
-        public virtual Users User { get; set; }
     }
 }

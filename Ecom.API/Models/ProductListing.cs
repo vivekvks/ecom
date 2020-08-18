@@ -5,15 +5,7 @@ namespace Ecom.API.Models
 {
     public partial class ProductListing
     {
-        public ProductListing()
-        {
-            ImageMaster = new HashSet<ImageMaster>();
-            ListingVarianceDetails = new HashSet<ListingVarianceDetails>();
-            OfferMaster = new HashSet<OfferMaster>();
-            QuestionMaster = new HashSet<QuestionMaster>();
-            ReviewMaster = new HashSet<ReviewMaster>();
-        }
-
+        
         public int Id { get; set; }
         public string ListingText { get; set; }
         public int UserId { get; set; }
@@ -44,13 +36,5 @@ namespace Ecom.API.Models
         public int MaxOrderQuantity { get; set; }
         public string VarianceJson { get; set; }
 
-        public virtual ImpoterMaster Impoter { get; set; }
-        public virtual ManufacturingMaster Manufacturing { get; set; }
-        public virtual Users User { get; set; }
-        public virtual ICollection<ImageMaster> ImageMaster { get; set; }
-        public virtual ICollection<ListingVarianceDetails> ListingVarianceDetails { get; set; }
-        public virtual ICollection<OfferMaster> OfferMaster { get; set; }
-        public virtual ICollection<QuestionMaster> QuestionMaster { get; set; }
-        public virtual ICollection<ReviewMaster> ReviewMaster { get; set; }
     }
 }

@@ -11,8 +11,5 @@ namespace Ecom.API.Models
         public int VarianceValueId { get; set; }
         public bool IsActive { get; set; }
 
-        public virtual ProductListing ProductListing { get; set; }
-        public virtual VarianceMaster VarianceMaster { get; set; }
-        public virtual VarianceValue VarianceValue { get; set; }
     }
 }

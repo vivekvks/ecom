@@ -11,6 +11,5 @@ namespace Ecom.API.Models
         public bool IsActive { get; set; }
         public DateTime? CreatedDate { get; set; }
 
-        public virtual CategoryMaster Category { get; set; }
     }
 }

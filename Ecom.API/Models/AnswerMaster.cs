@@ -13,6 +13,5 @@ namespace Ecom.API.Models
         public DateTime Date { get; set; }
         public bool IsActive { get; set; }
 
-        public virtual QuestionMaster Question { get; set; }
     }
 }

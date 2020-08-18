@@ -10,6 +10,5 @@ namespace Ecom.API.Models
         public string TermText { get; set; }
         public bool IaActive { get; set; }
 
-        public virtual OfferMaster Offer { get; set; }
     }
 }
