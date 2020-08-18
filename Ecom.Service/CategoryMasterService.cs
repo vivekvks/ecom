@@ -9,14 +9,14 @@ namespace Ecom.Service
 {
     public class CategoryMasterService : ICategoryMasterService
     {
-        private readonly ICategoryMasterRepository _categoryMasterRepository;
         public CategoryMasterService(ICategoryMasterRepository categoryMasterRepository)
         {
-            _categoryMasterRepository = categoryMasterRepository;
+
         }
-        public async Task<string> Get()
+
+        public Task<string> Get()
         {
-            return await _categoryMasterRepository.Get();
+            throw new NotImplementedException();
         }
     }
 }

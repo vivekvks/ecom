@@ -18,7 +18,7 @@ namespace Ecom.API
         public static void AddCustomServices(this IServiceCollection services)
         {
             services.AddScoped<ICategoryMasterService, CategoryMasterService>();
-            services.AddScoped<ICategoryMasterRepository, Ecom.Data.Implementation.DBRepo.CategoryMasterRepository>();
+            services.AddScoped<ICategoryMasterRepository, Ecom.Data.Implementation.Repository.CategoryMasterRepository>();
         }
     }
 }

@@ -1,8 +1,7 @@
 ﻿using Ecom.Data.Interface;
 using Ecom.Data.Models;
-using System.Threading.Tasks;
 
-namespace Ecom.Data.Implementation.DBRepo
+namespace Ecom.Data.Implementation.Repository
 {
     public class CategoryMasterRepository : GenericRepository<CategoryMaster>, ICategoryMasterRepository
     {
