@@ -12,5 +12,6 @@ namespace Ecom.Service.Interface
         Task<string> Get();
         Task<GetCategoryMasterResponse> Get(int id);
         Task<GetCategoryMasterResponse> Create(AddCategoryMasterRequest request);
+        Task Delete(int id);
     }
 }

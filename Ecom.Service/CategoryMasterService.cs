@@ -55,5 +55,15 @@ namespace Ecom.Service
             var categoryMasterId = await _categoryMasterRepository.InsertAsync(categoryMaster);
             return await Get(categoryMasterId);
         }
+
+        public async Task Delete(int id)
+        {
+            var categoryMaster = await _categoryMasterRepository.GetAsync(id);
+            if (categoryMaster == null)
+            {
+                throw new Exception($"{id} category master is not found.");
+            }
+            await _categoryMasterRepository.DeleteRowAsync(id);
+        }
     }
 }
