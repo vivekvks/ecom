@@ -109,7 +109,7 @@ namespace Ecom.Data.Implementation
                 .Remove(insertQuery.Length - 1, 1)
                 .Append(")");
             return insertQuery.ToString();
-        }
+        }   
 
         public async Task UpdateAsync(T t)
         {
@@ -123,6 +123,7 @@ namespace Ecom.Data.Implementation
         {
             var updateQuery = new StringBuilder($"UPDATE {_tableName} SET ");
             var properties = GenerateListOfProperties(GetProperties);
+            properties = properties.Where(x => x != "Id").ToList();
             properties.ForEach(property =>
             {
                 if (!property.Equals("Id"))

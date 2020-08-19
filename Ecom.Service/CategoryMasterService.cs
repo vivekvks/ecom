@@ -24,7 +24,7 @@ namespace Ecom.Service
         public async Task<GetCategoryMasterResponse> Get(int id)
         {
             var categoryMaster = await _categoryMasterRepository.GetAsync(id);
-            if(categoryMaster == null)
+            if (categoryMaster == null)
             {
                 throw new Exception($"{id} category master is not found.");
             }
@@ -54,6 +54,31 @@ namespace Ecom.Service
             };
             var categoryMasterId = await _categoryMasterRepository.InsertAsync(categoryMaster);
             return await Get(categoryMasterId);
+        }
+        public async Task<GetCategoryMasterResponse> Update(int id, AddCategoryMasterRequest request)
+        {
+            var categoryMaster = await _categoryMasterRepository.GetAsync(id);
+            if (categoryMaster == null)
+            {
+                throw new Exception($"{id} category master is not found.");
+            }
+
+            if (request.ParentId.HasValue)
+            {
+                var parentCategory = await _categoryMasterRepository.GetAsync(request.ParentId.Value);
+                if (parentCategory == null)
+                {
+                    throw new Exception($"{request.ParentId.Value} parent category master is not found.");
+                }
+            }
+            var updateCategoryMaster = new CategoryMaster
+            {
+                Id = id,
+                Name = request.Name,
+                ParentId = request.ParentId
+            };
+            await _categoryMasterRepository.UpdateAsync(updateCategoryMaster);
+            return await Get(id);
         }
 
         public async Task Delete(int id)
