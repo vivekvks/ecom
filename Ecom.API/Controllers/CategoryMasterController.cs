@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Ecom.Models.Web.Request;
+using Ecom.Models.Web.Response;
 using Ecom.Service.Interface;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -29,12 +31,13 @@ namespace Ecom.API.Controllers
 
         // GET api/<CategoryMasterController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<GetCategoryMasterResponse>> GetById(int id)
         {
-            return "value";
+            var categoryOrder = await _categoryMasterService.Get(id);
+            return Ok(categoryOrder);
         }
 
-        // POST api/<CategoryMasterController>
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] AddCategoryMasterRequest request)
         {

@@ -1,6 +1,7 @@
 ﻿using Ecom.Data.Interface;
 using Ecom.Data.Models;
 using Ecom.Models.Web.Request;
+using Ecom.Models.Web.Response;
 using Ecom.Service.Interface;
 using System;
 using System.Collections.Generic;
@@ -20,8 +21,23 @@ namespace Ecom.Service
         {
             throw new NotImplementedException();
         }
+        public async Task<GetCategoryMasterResponse> Get(int id)
+        {
+            var categoryMaster = await _categoryMasterRepository.GetAsync(id);
+            if(categoryMaster == null)
+            {
+                throw new Exception($"{id} category master is not found.");
+            }
+            return new GetCategoryMasterResponse
+            {
+                Id = categoryMaster.Id,
+                Name = categoryMaster.Name,
+                ParentId = categoryMaster.ParentId,
+                ReturnTypeId = categoryMaster.ReturnTypeId
+            };
+        }
 
-        public async Task<int> Create(AddCategoryMasterRequest request)
+        public async Task<GetCategoryMasterResponse> Create(AddCategoryMasterRequest request)
         {
             if (request.ParentId.HasValue)
             {
@@ -30,15 +46,14 @@ namespace Ecom.Service
                 {
                     throw new Exception($"{request.ParentId.Value} parent category master is not found.");
                 }
-
             }
             var categoryMaster = new CategoryMaster
             {
                 Name = request.Name,
                 ParentId = request.ParentId
             };
-           return await _categoryMasterRepository.InsertAsync(categoryMaster);
-            //return 22;
+            var categoryMasterId = await _categoryMasterRepository.InsertAsync(categoryMaster);
+            return await Get(categoryMasterId);
         }
     }
 }
