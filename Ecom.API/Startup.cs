@@ -75,7 +75,7 @@ namespace Ecom.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseApiResponseAndExceptionWrapper();
+            app.UseApiResponseAndExceptionWrapper( new AutoWrapperOptions { IsDebug=true });
 
             app.UseRouting();
 
