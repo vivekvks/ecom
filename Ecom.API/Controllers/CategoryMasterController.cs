@@ -48,7 +48,7 @@ namespace Ecom.API.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             await _categoryMasterService.Delete(id);
-            return NoContent();
+            return Ok();
         }
     }
 }
