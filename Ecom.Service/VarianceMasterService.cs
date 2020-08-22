@@ -19,8 +19,8 @@ namespace Ecom.Service
         }
         public async Task<List<GetVarianceMasterResponse>> Get()
         {
-            var varianceMasters = await _varianceMasterRepository.GetAllAsync();
-            return varianceMasters.Where(x => x.IsActive).Select(x => new GetVarianceMasterResponse
+            var varianceMasters = await _varianceMasterRepository.GetAllAsync(true);
+            return varianceMasters.Select(x => new GetVarianceMasterResponse
             {
                 Id = x.Id,
                 VarianceName = x.VarianceName,

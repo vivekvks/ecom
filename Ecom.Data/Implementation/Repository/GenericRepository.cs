@@ -46,6 +46,13 @@ namespace Ecom.Data.Implementation
                 return await connection.QueryAsync<T>($"SELECT * FROM {_tableName}");
             }
         }
+        public async Task<IEnumerable<T>> GetAllAsync(bool isActive)
+        {
+            using (var connection = CreateConnection())
+            {
+                return await connection.QueryAsync<T>($"SELECT * FROM {_tableName} WHERE IsActive=@IsActive", new { IsActive = isActive });
+            }
+        }
         public async Task DeleteRowAsync(int id)
         {
             using (var connection = CreateConnection())
@@ -109,7 +116,7 @@ namespace Ecom.Data.Implementation
                 .Remove(insertQuery.Length - 1, 1)
                 .Append(")");
             return insertQuery.ToString();
-        }   
+        }
 
         public async Task UpdateAsync(T t)
         {

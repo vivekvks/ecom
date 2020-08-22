@@ -8,6 +8,7 @@ namespace Ecom.Data.Interface
     public interface IGenericRepository<T>
     {
         Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<T>> GetAllAsync(bool isActive);
         Task DeleteRowAsync(int id);
         Task<T> GetAsync(int id);
         Task<int> SaveRangeAsync(IEnumerable<T> list);

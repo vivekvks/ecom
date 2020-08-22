@@ -18,8 +18,8 @@ namespace Ecom.Service
         }
         public async Task<List<GetCategoryReturnMasterResponse>> Get()
         {
-            var categoryReturnMasters = await _categoryReturnMasterRepository.GetAllAsync();
-            return categoryReturnMasters.Where(x => x.IsActive).Select(x => new GetCategoryReturnMasterResponse
+            var categoryReturnMasters = await _categoryReturnMasterRepository.GetAllAsync(true);
+            return categoryReturnMasters.Select(x => new GetCategoryReturnMasterResponse
             {
                 Id = x.Id,
                 NoOfDays = x.NoOfDays,
