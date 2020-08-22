@@ -76,12 +76,6 @@ namespace Ecom.Data.Models
             {
                 entity.HasKey(e => e.CategoryVarianceId);
 
-              
-                entity.HasOne(d => d.VarianceMaster)
-                    .WithMany(p => p.CategoryVarianceDetails)
-                    .HasForeignKey(d => d.VarianceMasterId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_CategoryVarianceDetails_VarianceMaster");
             });
 
             modelBuilder.Entity<CountryMaster>(entity =>
@@ -117,12 +111,6 @@ namespace Ecom.Data.Models
                     .HasForeignKey(d => d.ProductListingId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ListingVarianceDetails_ProductListing");
-
-                entity.HasOne(d => d.VarianceMaster)
-                    .WithMany(p => p.ListingVarianceDetails)
-                    .HasForeignKey(d => d.VarianceMasterId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_ListingVarianceDetails_VarianceMaster");
 
                 entity.HasOne(d => d.VarianceValue)
                     .WithMany(p => p.ListingVarianceDetails)
@@ -263,7 +251,7 @@ namespace Ecom.Data.Models
 
             modelBuilder.Entity<VarianceMaster>(entity =>
             {
-                entity.HasKey(e => e.VarianceId);
+                entity.HasKey(e => e.Id);
 
                 entity.Property(e => e.VarianceName)
                     .IsRequired()

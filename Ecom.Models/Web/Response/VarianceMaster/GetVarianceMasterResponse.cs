@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace Ecom.Data.Models
+namespace Ecom.Models.Web.Response
 {
-    public partial class VarianceMaster
+    public class GetVarianceMasterResponse
     {
         public int Id { get; set; }
         public string VarianceName { get; set; }
-        public bool IsActive { get; set; }
         public bool IncludeInTitle { get; set; }
     }
 }

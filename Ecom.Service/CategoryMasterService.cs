@@ -88,6 +88,7 @@ namespace Ecom.Service
             {
                 throw new Exception($"{id} category master is not found.");
             }
+            
             await _categoryMasterRepository.DeleteRowAsync(id);
         }
     }
