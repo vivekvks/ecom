@@ -1,4 +1,5 @@
 ﻿using Ecom.Data;
+using Ecom.Data.Implementation.Repository;
 using Ecom.Data.Interface;
 using Ecom.Service;
 using Ecom.Service.Interface;
@@ -18,7 +19,10 @@ namespace Ecom.API
         public static void AddCustomServices(this IServiceCollection services)
         {
             services.AddScoped<ICategoryMasterService, CategoryMasterService>();
-            services.AddScoped<ICategoryMasterRepository, Ecom.Data.Implementation.Repository.CategoryMasterRepository>();
+            services.AddScoped<ICategoryMasterRepository, CategoryMasterRepository>();
+            services.AddScoped<IVarianceMasterService, VarianceMasterService>();
+            services.AddScoped<IVarianceMasterRepository, VarianceMasterRepository>();
+
         }
     }
 }
