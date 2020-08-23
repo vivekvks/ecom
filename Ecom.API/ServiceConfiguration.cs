@@ -24,6 +24,8 @@ namespace Ecom.API
             services.AddScoped<IVarianceMasterRepository, VarianceMasterRepository>();
             services.AddScoped<ICategoryReturnMasterService, CategoryReturnMasterService>();
             services.AddScoped<ICategoryReturnMasterRepository, CategoryReturnMasterRepository>();
+            services.AddScoped<ICategoryVarianceDetailsService, CategoryVarianceDetailsService>();
+            services.AddScoped<ICategoryVarianceDetailsRepository, CategoryVarianceDetailsRepository>();
         }
     }
 }

@@ -158,7 +158,7 @@ namespace Ecom.Data.Implementation
                 List<T> list = new List<T>();
                 DynamicParameters spParameters = GetParameters(requestModel);
 
-                connection.Open();
+                //connection.Open();
                 try
                 {
                     var registro = SqlMapper.Query<T>(connection, spName, spParameters, commandType: CommandType.StoredProcedure);
@@ -192,14 +192,14 @@ namespace Ecom.Data.Implementation
             using (var connection = CreateConnection())
             {
                 DynamicParameters parameters = GetParameters(requestModel);
-                connection.Open();
+                //connection.Open();
                 try
                 {
                     var registro = connection.Execute(funcName, parameters, commandType: CommandType.StoredProcedure);
                 }
-                catch
+                catch (Exception ex)
                 {
-
+                    throw ex;
                 }
                 finally
                 {

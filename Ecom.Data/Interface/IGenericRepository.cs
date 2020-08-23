@@ -14,5 +14,7 @@ namespace Ecom.Data.Interface
         Task<int> SaveRangeAsync(IEnumerable<T> list);
         Task UpdateAsync(T t);
         Task<int> InsertAsync(T t);
+        void Exec<RequestModel>(string funcName, RequestModel requestModel);
+        List<T> ExecResult<RequestModel>(string spName, RequestModel requestModel);
     }
 }
