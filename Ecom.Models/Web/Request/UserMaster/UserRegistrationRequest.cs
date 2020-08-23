@@ -21,9 +21,9 @@ namespace Ecom.Models.Web.Request
         public UserRegistrationRequestValidator()
         {
             RuleFor(x => x.Email).NotEmpty().When(x=> string.IsNullOrEmpty(x.PhoneNo));
-            RuleFor(x => x.Email).EmailAddress();
+            RuleFor(x => x.Email).EmailAddress().When(x => !string.IsNullOrEmpty(x.Email));
             RuleFor(x => x.PhoneNo).NotEmpty().When(x => string.IsNullOrEmpty(x.Email));
-            RuleFor(x => x.Password).NotEmpty().Length(4, 128);
+            RuleFor(x => x.Password).NotEmpty().Length(4, 128).When(x=> !string.IsNullOrEmpty(x.Email));
             RuleFor(x => x.FirstName).MaximumLength(50);
             RuleFor(x => x.LastName).MaximumLength(50);
         }

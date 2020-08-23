@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -103,5 +104,11 @@ namespace Ecom.Utility
             return randomBytes;
         }
 
+        public static string GetJsonString<T>(T model)
+        {
+            if (model == null)
+                return null;
+            return JsonConvert.SerializeObject(model);
+        } 
     }
 }

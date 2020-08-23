@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoWrapper.Wrappers;
+using Ecom.Models.Constants;
 using Ecom.Models.Web.Request;
+using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,12 +15,18 @@ namespace Ecom.API.Controllers
     [ApiController]
     public class UserMasterController : ControllerBase
     {
-        [Route("registration")]
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] UserRegistrationRequest request)
+        private readonly IUserMasterService _userMasterService;
+        public UserMasterController(IUserMasterService userMasterService)
         {
-            //var response = await _categoryMasterService.Create(request);
-            return Ok();
+            _userMasterService = userMasterService;
+        }
+
+        [Route("Registration")]
+        [HttpPost]
+        public IActionResult Post([FromBody] UserRegistrationRequest request)
+        {
+            var response = _userMasterService.UserRegistration(request);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.REGISTER_SUCCESS, "User"), response));
         }
     }
 }

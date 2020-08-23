@@ -21,12 +21,16 @@ namespace Ecom.API
     {
         public static void AddCustomServices(this IServiceCollection services)
         {
+            services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
+            services.AddScoped<IRepository, Repository>();
             services.AddScoped<ICategoryMasterService, CategoryMasterService>();
             services.AddScoped<ICategoryMasterRepository, CategoryMasterRepository>();
             services.AddScoped<IVarianceMasterService, VarianceMasterService>();
             services.AddScoped<IVarianceMasterRepository, VarianceMasterRepository>();
             services.AddScoped<ICategoryReturnMasterService, CategoryReturnMasterService>();
             services.AddScoped<ICategoryReturnMasterRepository, CategoryReturnMasterRepository>();
+            services.AddScoped<IUserMasterRepository, UserMasterRepository>();
+            services.AddScoped<IUserMasterService, UserMasterService>();
         }
 
         public static void AddFluentValidation(this IServiceCollection services)
