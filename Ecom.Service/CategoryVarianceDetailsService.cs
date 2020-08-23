@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Security.Cryptography.X509Certificates;
 using System.Linq;
+using AutoWrapper.Wrappers;
 
 namespace Ecom.Service
 {
@@ -22,7 +23,7 @@ namespace Ecom.Service
         {
             if (addRequests.Any(x => !x.VarianceMasterId.HasValue && string.IsNullOrEmpty(x.VarianceMasterName)))
             {
-                throw new Exception("Variance details can not be null.");
+                throw new ApiException("Variance details can not be null.");
             }
 
             string jsonString = JsonConvert.SerializeObject(addRequests);
