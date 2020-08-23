@@ -1,8 +1,11 @@
 ﻿using Ecom.Data;
 using Ecom.Data.Implementation.Repository;
 using Ecom.Data.Interface;
+using Ecom.Models.Web;
+using Ecom.Models.Web.Request;
 using Ecom.Service;
 using Ecom.Service.Interface;
+using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -26,6 +29,11 @@ namespace Ecom.API
             services.AddScoped<ICategoryReturnMasterRepository, CategoryReturnMasterRepository>();
             services.AddScoped<ICategoryVarianceDetailsService, CategoryVarianceDetailsService>();
             services.AddScoped<ICategoryVarianceDetailsRepository, CategoryVarianceDetailsRepository>();
+        }
+
+        public static void AddFluentValidation(this IServiceCollection services)
+        {
+            services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<FluentAssemblyCommon>());
         }
     }
 }
