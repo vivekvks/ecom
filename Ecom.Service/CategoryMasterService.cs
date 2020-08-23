@@ -4,8 +4,6 @@ using Ecom.Models.Web.Request;
 using Ecom.Models.Web.Response;
 using Ecom.Service.Interface;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Ecom.Service
