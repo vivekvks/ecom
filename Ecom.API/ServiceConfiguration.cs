@@ -21,6 +21,8 @@ namespace Ecom.API
     {
         public static void AddCustomServices(this IServiceCollection services)
         {
+            services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
+            services.AddScoped<IRepository, Repository>();
             services.AddScoped<ICategoryMasterService, CategoryMasterService>();
             services.AddScoped<ICategoryMasterRepository, CategoryMasterRepository>();
             services.AddScoped<IVarianceMasterService, VarianceMasterService>();
@@ -29,6 +31,8 @@ namespace Ecom.API
             services.AddScoped<ICategoryReturnMasterRepository, CategoryReturnMasterRepository>();
             services.AddScoped<ICategoryVarianceDetailsService, CategoryVarianceDetailsService>();
             services.AddScoped<ICategoryVarianceDetailsRepository, CategoryVarianceDetailsRepository>();
+            services.AddScoped<IUserMasterRepository, UserMasterRepository>();
+            services.AddScoped<IUserMasterService, UserMasterService>();
             services.AddScoped<ICategoryAttributeMasterService, CategoryAttributeMasterService>();
             services.AddScoped<ICategoryAttributeMasterRepository, CategoryAttributeMasterRepository>();
         }

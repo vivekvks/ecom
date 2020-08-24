@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ecom.Service.Interface
+namespace Ecom.Data.Interface
 {
-    public interface IUserMasterService
+    public interface IUserMasterRepository
     {
         UserRegistrationResponse UserRegistration(UserRegistrationRequest request);
     }
