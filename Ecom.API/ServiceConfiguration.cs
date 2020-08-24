@@ -29,6 +29,8 @@ namespace Ecom.API
             services.AddScoped<ICategoryReturnMasterRepository, CategoryReturnMasterRepository>();
             services.AddScoped<ICategoryVarianceDetailsService, CategoryVarianceDetailsService>();
             services.AddScoped<ICategoryVarianceDetailsRepository, CategoryVarianceDetailsRepository>();
+            services.AddScoped<ICategoryAttributeMasterService, CategoryAttributeMasterService>();
+            services.AddScoped<ICategoryAttributeMasterRepository, CategoryAttributeMasterRepository>();
         }
 
         public static void AddFluentValidation(this IServiceCollection services)

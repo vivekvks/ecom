@@ -27,7 +27,7 @@ namespace Ecom.Service
             }
 
             string jsonString = JsonConvert.SerializeObject(addRequests);
-            var param = new AddRequestModel
+            var param = new
             {
                 JsonString = jsonString
             };
@@ -35,9 +35,5 @@ namespace Ecom.Service
 
             return true;
         }
-    }
-    public class AddRequestModel
-    {
-        public string JsonString { get; set; }
     }
 }
