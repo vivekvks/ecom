@@ -1,4 +1,5 @@
-﻿using Ecom.Data;
+﻿using Ecom.API.Attributes;
+using Ecom.Data;
 using Ecom.Data.Implementation.Repository;
 using Ecom.Data.Interface;
 using Ecom.Models.Web;
@@ -35,11 +36,14 @@ namespace Ecom.API
             services.AddScoped<IUserMasterService, UserMasterService>();
             services.AddScoped<ICategoryAttributeMasterService, CategoryAttributeMasterService>();
             services.AddScoped<ICategoryAttributeMasterRepository, CategoryAttributeMasterRepository>();
+            services.AddScoped<ICompanyMasterRepository, CompanyMasterRepository>();
+            services.AddScoped<ICompanyMasterService, CompanyMasterService>();
         }
 
         public static void AddFluentValidation(this IServiceCollection services)
         {
-            services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<FluentAssemblyCommon>());
+            services.AddMvc(op=> op.Filters.Add(typeof(ValidateFilterAttribute)))
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<FluentAssemblyCommon>());
         }
     }
 }

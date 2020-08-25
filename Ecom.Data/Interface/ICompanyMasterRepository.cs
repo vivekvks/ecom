@@ -9,5 +9,6 @@ namespace Ecom.Data.Interface
     public interface ICompanyMasterRepository
     {
         CompanyRegistrationResponse CompanyRegistration(CompanyRegistrationRequest request);
+        CompanyGetResponse CompanyGet(int companyId);
     }
 }

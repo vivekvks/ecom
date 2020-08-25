@@ -9,5 +9,7 @@ namespace Ecom.Data.Interface
     public interface IUserMasterRepository
     {
         UserRegistrationResponse UserRegistration(UserRegistrationRequest request);
+
+        UserGetResponse UserGet(int userId);
     }
 }

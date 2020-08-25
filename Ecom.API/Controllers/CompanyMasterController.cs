@@ -15,19 +15,26 @@ namespace Ecom.API.Controllers
     [ApiController]
     public class CompanyMasterController : ControllerBase
     {
-        private readonly ICompanyMasterService _CompanyMasterService;
-        public CompanyMasterController(ICompanyMasterService CompanyMasterService)
+        private readonly ICompanyMasterService _companyMasterService;
+        public CompanyMasterController(ICompanyMasterService companyMasterService)
         {
-            _CompanyMasterService = CompanyMasterService;
+            _companyMasterService = companyMasterService;
         }
 
         [Route("Registration")]
         [HttpPost]
         public IActionResult Post([FromBody] CompanyRegistrationRequest request)
         {
-            var response = _CompanyMasterService.CompanyRegistration(request);
+            var response = _companyMasterService.CompanyRegistration(request);
             return Ok(new ApiResponse(string.Format(ResponseMessage.REGISTER_SUCCESS, "Company"), response));
         }
 
+        [Route("{id:int}")]
+        [HttpGet]
+        public IActionResult Get([FromRoute] int id)
+        {
+            var response = _companyMasterService.CompanyGet(id);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "Company"), response));
+        }
     }
 }

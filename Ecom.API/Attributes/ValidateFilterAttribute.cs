@@ -29,7 +29,7 @@ namespace Ecom.API.Attributes
                 context.Result = new ContentResult()
                 {
                     Content = JsonConvert.SerializeObject(validateObject),
-                    StatusCode = 412
+                    StatusCode = 400
                 };
             }
         }

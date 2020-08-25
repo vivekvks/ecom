@@ -6,7 +6,14 @@ namespace Ecom.Models.Constants
 {
     public static class StoredProcedure
     {
+        #region User
         public const string USER_REGISTRATION = "User_Registration";
+        public const string USER_GET = "User_Get";
+        #endregion
+
+        #region company 
         public const string COMPANY_REGISTRATION = "Company_Registration";
+        public const string COMPANY_GET = "Company_Get";
+        #endregion
     }
 }

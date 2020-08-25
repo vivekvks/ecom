@@ -28,5 +28,13 @@ namespace Ecom.API.Controllers
             var response = _userMasterService.UserRegistration(request);
             return Ok(new ApiResponse(string.Format(ResponseMessage.REGISTER_SUCCESS, "User"), response));
         }
+
+        [Route("{id:int}")]
+        [HttpGet]
+        public IActionResult Get([FromRoute] int id)
+        {
+            var response = _userMasterService.UserGet(id);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "User"), response));
+        }
     }
 }

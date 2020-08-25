@@ -9,5 +9,6 @@ namespace Ecom.Service.Interface
     public interface ICompanyMasterService
     {
         CompanyRegistrationResponse CompanyRegistration(CompanyRegistrationRequest request);
+        CompanyGetResponse CompanyGet(int companyId);
     }
 }

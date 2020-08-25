@@ -25,5 +25,10 @@ namespace Ecom.Service
             request.Password = StringHelper.Encrypt(request.Password, _settings.SaltKey);
             return _userMasterRepository.UserRegistration(request);
         }
+
+        public UserGetResponse UserGet(int userId)
+        {
+            return _userMasterRepository.UserGet(userId);
+        }
     }
 }
