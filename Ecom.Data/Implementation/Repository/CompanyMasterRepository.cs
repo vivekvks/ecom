@@ -1,12 +1,8 @@
-﻿using Dapper;
-using Ecom.Data.Interface;
+﻿using Ecom.Data.Interface;
 using Ecom.Models.Constants;
-using Ecom.Models.Web.Request;
-using Ecom.Models.Web.Response;
-using System;
-using System.Collections.Generic;
+using Ecom.Models.Request;
+using Ecom.Models.Response;
 using System.Linq;
-using System.Text;
 
 namespace Ecom.Data.Implementation.Repository
 {
@@ -21,13 +17,6 @@ namespace Ecom.Data.Implementation.Repository
         public CompanyRegistrationResponse CompanyRegistration(CompanyRegistrationRequest request)
         {
             return _repository.ExecResult<CompanyRegistrationResponse>(StoredProcedure.COMPANY_REGISTRATION, _repository.GetBaseParameters(request)).FirstOrDefault();
-        }
-
-        public CompanyGetResponse CompanyGet(int companyId)
-        {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("Id", companyId);
-            return _repository.ExecResult<CompanyGetResponse>(StoredProcedure.COMPANY_GET, parameters).FirstOrDefault();
         }
     }
 }

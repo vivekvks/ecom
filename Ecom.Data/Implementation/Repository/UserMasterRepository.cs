@@ -1,14 +1,9 @@
 ﻿using Dapper;
 using Ecom.Data.Interface;
 using Ecom.Models.Constants;
-using Ecom.Models.Web.Request;
-using Ecom.Models.Web.Response;
-using Ecom.Utility;
-using System;
-using System.Collections.Generic;
+using Ecom.Models.Request;
+using Ecom.Models.Response;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ecom.Data.Implementation.Repository
 {

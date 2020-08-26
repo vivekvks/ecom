@@ -1,6 +1,6 @@
 ﻿using AutoWrapper.Wrappers;
 using Ecom.Data.Interface;
-using Ecom.Models.Web.Request;
+using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using Newtonsoft.Json;
 using System.Collections.Generic;

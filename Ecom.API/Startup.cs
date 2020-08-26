@@ -1,5 +1,3 @@
-using System;
-using System.Text;
 using AutoWrapper;
 using Ecom.Authentication;
 using Ecom.Utility;
@@ -10,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Text;
 
 namespace Ecom.API
 {

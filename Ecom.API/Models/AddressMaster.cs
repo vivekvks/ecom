@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Ecom.API.Models
 {
     public partial class AddressMaster
     {
-      
+
         public int Id { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }

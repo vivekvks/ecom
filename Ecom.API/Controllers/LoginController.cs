@@ -1,12 +1,7 @@
-﻿using System.Linq;
-using Ecom.Models.Web;
+﻿using Ecom.Models.Web;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Ecom.Authentication;
 using Microsoft.Extensions.Configuration;
-using Ecom.Utility;
-using Ecom.Service.Interface;
-using Ecom.Service;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

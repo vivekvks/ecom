@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Ecom.Models.Web.Request;
-using Ecom.Models.Web.Response;
+﻿using AutoWrapper.Wrappers;
+using Ecom.Models.Constants;
+using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Ecom.API.Controllers
 {
@@ -24,31 +24,33 @@ namespace Ecom.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<GetCategoryMasterResponse>> GetById(int id)
+        public IActionResult Get(int id)
         {
-            var categoryOrder = await _categoryMasterService.Get(id);
-            return Ok(categoryOrder);
+            var categoryMaster = _categoryMasterService.Get(id);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "CategoryMaster"), categoryMaster));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] AddCategoryMasterRequest request)
+        public IActionResult Post([FromBody] CategoryMasterAddRequest request)
         {
-            var response = await _categoryMasterService.Create(request);
-            return Ok(response);
+            var categoryMasterId = _categoryMasterService.Add(request);
+            var response = _categoryMasterService.Get(categoryMasterId);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.ADD_SUCCESS, "CategoryMaster"), response));
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] AddCategoryMasterRequest request)
+        public IActionResult Put(int id, [FromBody] CategoryMasterUpdateRequest request)
         {
-            var response = await _categoryMasterService.Update(id, request);
-            return Ok(response);
+            var categoryMasterId = _categoryMasterService.Update(id, request);
+            var response = _categoryMasterService.Get(categoryMasterId);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.UPDATE_SUCCESS, "CategoryMaster"), response));
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            await _categoryMasterService.Delete(id);
-            return Ok();
+            var response = _categoryMasterService.Delete(id);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.DELETE_SUCCESS, "CategoryMaster"), response));
         }
     }
 }

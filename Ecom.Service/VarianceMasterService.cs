@@ -1,11 +1,8 @@
 ﻿using Ecom.Data.Interface;
-using Ecom.Data.Models;
-using Ecom.Models.Web.Response;
+using Ecom.Models.Response;
 using Ecom.Service.Interface;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Ecom.Service

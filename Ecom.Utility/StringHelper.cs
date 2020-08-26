@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -109,6 +108,6 @@ namespace Ecom.Utility
             if (model == null)
                 return null;
             return JsonConvert.SerializeObject(model);
-        } 
+        }
     }
 }
