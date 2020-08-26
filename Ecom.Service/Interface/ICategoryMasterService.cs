@@ -1,9 +1,5 @@
-﻿using Ecom.Models.Web.Request;
-using Ecom.Models.Web.Response;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ecom.Models.Request;
+using Ecom.Models.Response;
 
 namespace Ecom.Service.Interface
 {

@@ -1,8 +1,5 @@
-﻿using Ecom.Models.Web.Request;
-using Ecom.Models.Web.Response;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Ecom.Models.Request;
+using Ecom.Models.Response;
 
 namespace Ecom.Data.Interface
 {

@@ -1,13 +1,11 @@
-﻿using Ecom.Data.Interface;
-using Ecom.Models.Web.Request;
+﻿using AutoWrapper.Wrappers;
+using Ecom.Data.Interface;
+using Ecom.Models.Request;
 using Ecom.Service.Interface;
-using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore.Internal;
-using System.Security.Cryptography.X509Certificates;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Linq;
-using AutoWrapper.Wrappers;
 
 namespace Ecom.Service
 {

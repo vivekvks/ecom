@@ -1,4 +1,4 @@
-﻿using Ecom.Models.Web.Request;
+﻿using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace Ecom.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]List<CategoryAttributeMasterAddRequest> addRequests)
+        public IActionResult Post([FromBody] List<CategoryAttributeMasterAddRequest> addRequests)
         {
             var response = _categoryAttributeMasterService.Create(addRequests);
             return Ok(response);

@@ -1,7 +1,5 @@
-﻿using Ecom.Models.Web.Response;
-using System;
+﻿using Ecom.Models.Response;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Ecom.Service.Interface

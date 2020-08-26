@@ -1,9 +1,8 @@
 ﻿using Dapper;
 using Ecom.Data.Interface;
-using Ecom.Data.Models;
 using Ecom.Models.Constants;
-using Ecom.Models.Web.Request;
-using Ecom.Models.Web.Response;
+using Ecom.Models.Request;
+using Ecom.Models.Response;
 using System.Linq;
 
 namespace Ecom.Data.Implementation.Repository

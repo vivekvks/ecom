@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoWrapper.Wrappers;
+﻿using AutoWrapper.Wrappers;
 using Ecom.Models.Constants;
-using Ecom.Models.Web.Request;
-using Ecom.Models.Web.Response;
+using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Ecom.API.Controllers
 {

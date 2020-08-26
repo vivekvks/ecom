@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using Ecom.Data.Interface;
-using Ecom.Models.Web.Request;
+using Ecom.Models.Request;
 using Ecom.Utility;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Ecom.Data.Implementation.Repository

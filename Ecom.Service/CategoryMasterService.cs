@@ -1,10 +1,7 @@
 ﻿using Ecom.Data.Interface;
-using Ecom.Data.Models;
-using Ecom.Models.Web.Request;
-using Ecom.Models.Web.Response;
+using Ecom.Models.Request;
+using Ecom.Models.Response;
 using Ecom.Service.Interface;
-using System;
-using System.Threading.Tasks;
 
 namespace Ecom.Service
 {

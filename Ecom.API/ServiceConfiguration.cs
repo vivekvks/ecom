@@ -1,17 +1,11 @@
 ﻿using Ecom.API.Attributes;
-using Ecom.Data;
 using Ecom.Data.Implementation.Repository;
 using Ecom.Data.Interface;
-using Ecom.Models.Web;
-using Ecom.Models.Web.Request;
+using Ecom.Models.Request;
 using Ecom.Service;
 using Ecom.Service.Interface;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Ecom.API
 {
@@ -41,7 +35,7 @@ namespace Ecom.API
 
         public static void AddFluentValidation(this IServiceCollection services)
         {
-            services.AddMvc(op=> op.Filters.Add(typeof(ValidateFilterAttribute)))
+            services.AddMvc(op => op.Filters.Add(typeof(ValidateFilterAttribute)))
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<FluentAssemblyCommon>());
         }
     }

@@ -1,14 +1,10 @@
-﻿using Ecom.Models.Web.Request;
-using Ecom.Models.Web.Response;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Ecom.Models.Request;
+using Ecom.Models.Response;
 
 namespace Ecom.Service.Interface
 {
     public interface ICompanyMasterService
     {
         CompanyRegistrationResponse CompanyRegistration(CompanyRegistrationRequest request);
-        CompanyGetResponse CompanyGet(int companyId);
     }
 }

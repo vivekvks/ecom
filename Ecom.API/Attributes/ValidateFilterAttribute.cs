@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Ecom.API.Attributes
 {
@@ -29,7 +26,7 @@ namespace Ecom.API.Attributes
                 context.Result = new ContentResult()
                 {
                     Content = JsonConvert.SerializeObject(validateObject),
-                    StatusCode = 400
+                    StatusCode = 412
                 };
             }
         }

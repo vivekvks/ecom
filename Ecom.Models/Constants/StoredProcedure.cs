@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ecom.Models.Constants
+﻿namespace Ecom.Models.Constants
 {
     public static class StoredProcedure
     {

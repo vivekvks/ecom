@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Ecom.API.Models
+﻿namespace Ecom.API.Models
 {
     public partial class ProductListing
     {
-        
+
         public int Id { get; set; }
         public string ListingText { get; set; }
         public int UserId { get; set; }

@@ -1,7 +1,5 @@
-﻿using Ecom.Models.Web.Request;
-using System;
+﻿using Ecom.Models.Request;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Ecom.Service.Interface
 {

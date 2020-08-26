@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Ecom.Data.Models
+﻿namespace Ecom.Data.Models
 {
     public partial class CategoryVarianceDetails
     {
