@@ -9,10 +9,9 @@ namespace Ecom.Service.Interface
 {
     public interface ICategoryMasterService
     {
-        Task<string> Get();
-        Task<GetCategoryMasterResponse> Get(int id);
-        Task<GetCategoryMasterResponse> Create(AddCategoryMasterRequest request);
-        Task<GetCategoryMasterResponse> Update(int id, AddCategoryMasterRequest request);
-        Task Delete(int id);
+        public CategoryMasterGetResponse Get(int id);
+        int Create(CategoryMasterAddRequest request);
+        int Update(int id, CategoryMasterUpdateRequest request);
+        bool Delete(int id);
     }
 }

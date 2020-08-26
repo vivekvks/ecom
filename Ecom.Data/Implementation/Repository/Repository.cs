@@ -16,10 +16,10 @@ namespace Ecom.Data.Implementation.Repository
 {
     public class Repository : IRepository
     {
-        private readonly IDbConnectionFactory _dbConnectionFactory;
-        public Repository(IDbConnectionFactory dbConnectionFactory)
+        private readonly IConfiguration _configuration;
+        public Repository(IConfiguration configuration)
         {
-            _dbConnectionFactory = dbConnectionFactory;
+            _configuration = configuration;
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Ecom.Data.Implementation.Repository
         /// <returns></returns>
         public List<T> ExecResult<T>(string spName, DynamicParameters parameters)
         {
-            using (var connection = _dbConnectionFactory.GetConnection)
+            using (var connection = GetDbConnection())
             {
                 try
                 {
@@ -53,7 +53,7 @@ namespace Ecom.Data.Implementation.Repository
         /// <returns></returns>
         public async Task<List<T>> ExecResultAsync<T>(string spName, DynamicParameters parameters)
         {
-            using (var connection = _dbConnectionFactory.GetConnection)
+            using (var connection = GetDbConnection())
             {
                 try
                 {
@@ -84,7 +84,7 @@ namespace Ecom.Data.Implementation.Repository
         /// <typeparam name="RequestModel">Generic Type, in Almost Cased will be a Interface Ref.</typeparam>
         /// <param name="requestModel">SP Request Model to be Converted</param>
         /// <returns></returns>
-        private DynamicParameters GetParameters<T>(T parametersModel)
+        public DynamicParameters GetParameters<T>(T parametersModel)
         {
             DynamicParameters dynamicParameters = new DynamicParameters();
             Type type = parametersModel.GetType();
@@ -96,6 +96,11 @@ namespace Ecom.Data.Implementation.Repository
             return dynamicParameters;
         }
 
+        private IDbConnection GetDbConnection()
+        {
+            var _connection = new SqlConnection(_configuration.GetConnectionString("EComDatabase"));
+            return _connection;
+        }
         #endregion
     }
 }

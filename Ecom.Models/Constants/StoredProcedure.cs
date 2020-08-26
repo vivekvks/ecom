@@ -15,5 +15,12 @@ namespace Ecom.Models.Constants
         public const string COMPANY_REGISTRATION = "Company_Registration";
         public const string COMPANY_GET = "Company_Get";
         #endregion
+
+        #region CategoryMaster
+        public const string CATEGORYMASTER_GET = "CategoryMaster_Get";
+        public const string CATEGORYMASTER_ADD = "CategoryMaster_Add";
+        public const string CATEGORYMASTER_UPDATE = "CategoryMaster_Update";
+        public const string CATEGORYMASTER_DELETE = "CategoryMaster_Delete";
+        #endregion
     }
 }

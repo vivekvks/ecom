@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ecom.Models.Web.Response
+namespace Ecom.Models.Web.Request
 {
-    public class GetCategoryMasterResponse
+    public class CategoryMasterAddRequest
     {
-        public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }
-        public int? ReturnTypeId { get; set; }
+        public int ReturnTypeId { get; set; }
     }
 }

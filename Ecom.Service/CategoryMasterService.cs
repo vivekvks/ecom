@@ -18,87 +18,25 @@ namespace Ecom.Service
             _categoryMasterRepository = categoryMasterRepository;
             _categoryReturnMasterRepository = categoryReturnMasterRepository;
         }
-        public Task<string> Get()
+
+        public CategoryMasterGetResponse Get(int id)
         {
-            throw new NotImplementedException();
-        }
-        public async Task<GetCategoryMasterResponse> Get(int id)
-        {
-            var categoryMaster = await _categoryMasterRepository.GetAsync(id);
-            if (categoryMaster == null)
-            {
-                throw new Exception($"{id} category master is not found.");
-            }
-            return new GetCategoryMasterResponse
-            {
-                Id = categoryMaster.Id,
-                Name = categoryMaster.Name,
-                ParentId = categoryMaster.ParentId,
-                ReturnTypeId = categoryMaster.ReturnTypeId
-            };
+            return _categoryMasterRepository.Get(id);
         }
 
-        public async Task<GetCategoryMasterResponse> Create(AddCategoryMasterRequest request)
+        public int Create(CategoryMasterAddRequest request)
         {
-            if (request.ParentId.HasValue)
-            {
-                var parentCategory = await _categoryMasterRepository.GetAsync(request.ParentId.Value);
-                if (parentCategory == null)
-                {
-                    throw new Exception($"{request.ParentId.Value} parent category master is not found.");
-                }
-            }
-            var categoryReturnMaster = await _categoryReturnMasterRepository.GetAsync(request.ReturnTypeId);
-            if (categoryReturnMaster == null)
-            {
-                throw new Exception($"{request.ReturnTypeId} return type id is not found.");
-            }
-
-            var categoryMaster = new CategoryMaster
-            {
-                Name = request.Name,
-                ParentId = request.ParentId,
-                ReturnTypeId = request.ReturnTypeId
-            };
-            var categoryMasterId = await _categoryMasterRepository.InsertAsync(categoryMaster);
-            return await Get(categoryMasterId);
-        }
-        public async Task<GetCategoryMasterResponse> Update(int id, AddCategoryMasterRequest request)
-        {
-            var categoryMaster = await _categoryMasterRepository.GetAsync(id);
-            if (categoryMaster == null)
-            {
-                throw new Exception($"{id} category master is not found.");
-            }
-
-            if (request.ParentId.HasValue)
-            {
-                var parentCategory = await _categoryMasterRepository.GetAsync(request.ParentId.Value);
-                if (parentCategory == null)
-                {
-                    throw new Exception($"{request.ParentId.Value} parent category master is not found.");
-                }
-            }
-            var updateCategoryMaster = new CategoryMaster
-            {
-                Id = id,
-                Name = request.Name,
-                ParentId = request.ParentId,
-                ReturnTypeId = request.ReturnTypeId
-            };
-            await _categoryMasterRepository.UpdateAsync(updateCategoryMaster);
-            return await Get(id);
+            return _categoryMasterRepository.Add(request);
         }
 
-        public async Task Delete(int id)
+        public int Update(int id, CategoryMasterUpdateRequest request)
         {
-            var categoryMaster = await _categoryMasterRepository.GetAsync(id);
-            if (categoryMaster == null)
-            {
-                throw new Exception($"{id} category master is not found.");
-            }
+            return _categoryMasterRepository.Update(id, request);
+        }
 
-            await _categoryMasterRepository.DeleteRowAsync(id);
+        public bool Delete(int id)
+        {
+            return _categoryMasterRepository.Delete(id);
         }
     }
 }

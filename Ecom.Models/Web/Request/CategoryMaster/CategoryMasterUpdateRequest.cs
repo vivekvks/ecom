@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Ecom.Models.Web.Request
 {
-    public class AddCategoryMasterRequest
+    public class CategoryMasterUpdateRequest
     {
-        public int? ParentId { get; set; }
         public string Name { get; set; }
         public int ReturnTypeId { get; set; }
     }

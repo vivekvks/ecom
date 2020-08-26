@@ -22,7 +22,6 @@ namespace Ecom.API
     {
         public static void AddCustomServices(this IServiceCollection services)
         {
-            services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
             services.AddScoped<IRepository, Repository>();
             services.AddScoped<ICategoryMasterService, CategoryMasterService>();
             services.AddScoped<ICategoryMasterRepository, CategoryMasterRepository>();
