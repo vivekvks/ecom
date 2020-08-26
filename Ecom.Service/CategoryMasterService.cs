@@ -8,12 +8,9 @@ namespace Ecom.Service
     public class CategoryMasterService : ICategoryMasterService
     {
         private readonly ICategoryMasterRepository _categoryMasterRepository;
-        private readonly ICategoryReturnMasterRepository _categoryReturnMasterRepository;
-        public CategoryMasterService(ICategoryMasterRepository categoryMasterRepository,
-            ICategoryReturnMasterRepository categoryReturnMasterRepository)
+        public CategoryMasterService(ICategoryMasterRepository categoryMasterRepository)
         {
             _categoryMasterRepository = categoryMasterRepository;
-            _categoryReturnMasterRepository = categoryReturnMasterRepository;
         }
 
         public CategoryMasterGetResponse Get(int id)
@@ -21,7 +18,7 @@ namespace Ecom.Service
             return _categoryMasterRepository.Get(id);
         }
 
-        public int Create(CategoryMasterAddRequest request)
+        public int Add(CategoryMasterAddRequest request)
         {
             return _categoryMasterRepository.Add(request);
         }

@@ -33,7 +33,7 @@ namespace Ecom.API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] CategoryMasterAddRequest request)
         {
-            var categoryMasterId = _categoryMasterService.Create(request);
+            var categoryMasterId = _categoryMasterService.Add(request);
             var response = _categoryMasterService.Get(categoryMasterId);
             return Ok(new ApiResponse(string.Format(ResponseMessage.ADD_SUCCESS, "CategoryMaster"), response));
         }
