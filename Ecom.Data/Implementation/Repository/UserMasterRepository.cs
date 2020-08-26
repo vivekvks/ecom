@@ -26,5 +26,12 @@ namespace Ecom.Data.Implementation.Repository
             parameters.Add("Id", userId);
             return _repository.ExecResult<UserGetResponse>(StoredProcedure.USER_GET, parameters).FirstOrDefault();
         }
+
+        public UserGetResponse Login(LoginRequest request)
+        {
+            var parameters = _repository.GetParameters(request);
+            parameters.Add("UserName", request.UserName);
+            return _repository.ExecResult<UserGetResponse>(StoredProcedure.USER_LOGIN, parameters).FirstOrDefault();
+        }
     }
 }

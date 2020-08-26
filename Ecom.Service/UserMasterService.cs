@@ -17,15 +17,24 @@ namespace Ecom.Service
             _settings = settings.Value.Settings;
         }
 
-        public UserRegistrationResponse UserRegistration(UserRegistrationRequest request)
+        public UserRegistrationResponse Registration(UserRegistrationRequest request)
         {
             request.Password = StringHelper.Encrypt(request.Password, _settings.SaltKey);
             return _userMasterRepository.UserRegistration(request);
         }
 
-        public UserGetResponse UserGet(int userId)
+        public UserGetResponse Get(int userId)
         {
             return _userMasterRepository.UserGet(userId);
+        }
+
+        public bool Login(LoginRequest request)
+        {
+            var result = _userMasterRepository.Login(request);
+            if (request.Password != StringHelper.Decrypt(result.Password, _settings.SaltKey))
+                throw new System.Exception("Username or password is incorrect");
+            //To Do Token Generation
+            return true;
         }
     }
 }

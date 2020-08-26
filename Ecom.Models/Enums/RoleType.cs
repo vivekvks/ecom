@@ -1,7 +1,12 @@
-﻿namespace Ecom.Models.Enums
+﻿using System.ComponentModel;
+
+namespace Ecom.Models.Enums
 {
     public enum RoleType
     {
-        Admin = 1
+        [Description("Admin")]
+        Admin = 1,
+        [Description("User")]
+        User = 2
     }
 }

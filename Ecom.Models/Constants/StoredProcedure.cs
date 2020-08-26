@@ -5,6 +5,7 @@
         #region User
         public const string USER_REGISTRATION = "User_Registration";
         public const string USER_GET = "User_Get";
+        public const string USER_LOGIN = "User_Login";
         #endregion
 
         #region company 
