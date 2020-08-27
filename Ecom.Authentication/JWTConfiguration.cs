@@ -1,6 +1,7 @@
 ﻿using Ecom.Models.Enums;
 using Ecom.Utility;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -33,6 +34,7 @@ namespace Ecom.Authentication
 
         public static void AddJWTAuthorization(this IServiceCollection services)
         {
+            services.AddScoped<IJwtHelper, JwtHelper>();
             services.AddAuthorization(config =>
             {
                 config.AddPolicy(RoleType.Admin.Description(), Policies.AdminPolicy());
@@ -40,5 +42,10 @@ namespace Ecom.Authentication
             });
         }
 
+        public static void AddJWTTokenReader(this IServiceCollection services)
+        {
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IJwtReader, JwtReader>();
+        }
     }
 }

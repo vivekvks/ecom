@@ -6,8 +6,8 @@ using System.Text;
 
 namespace Ecom.Authentication
 {
-    public interface IJWTHelper
+    public interface IJwtHelper
     {
-        string GenerateJWTToken(TokenData tokenData, Jwt jwt);
+        string GenerateJWTToken(JwtTokenModel tokenData, Jwt jwt);
     }
 }

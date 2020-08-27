@@ -13,6 +13,7 @@ namespace Ecom.API.Controllers
     public class UserMasterController : ControllerBase
     {
         private readonly IUserMasterService _userMasterService;
+
         public UserMasterController(IUserMasterService userMasterService)
         {
             _userMasterService = userMasterService;

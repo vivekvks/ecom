@@ -12,9 +12,9 @@ namespace Ecom.Service
     public class UserMasterService : IUserMasterService
     {
         private readonly IUserMasterRepository _userMasterRepository;
-        private readonly IJWTHelper _jWTHelper;
+        private readonly IJwtHelper _jWTHelper;
         private ConfigurationOption _settings { get; set; }
-        public UserMasterService(IUserMasterRepository userMasterRepository, IOptions<ConfigurationOption> settings, IJWTHelper jWTHelper)
+        public UserMasterService(IUserMasterRepository userMasterRepository, IOptions<ConfigurationOption> settings, IJwtHelper jWTHelper)
         {
             _userMasterRepository = userMasterRepository;
             _settings = settings.Value;
@@ -40,12 +40,12 @@ namespace Ecom.Service
                 if (request.Password != StringHelper.Decrypt(result.Password, _settings.Settings.SaltKey))
                     return null;
 
-                TokenData tokenData = new TokenData()
+                JwtTokenModel tokenData = new JwtTokenModel()
                 {
                     Email = result.Email,
                     PhoneNo = result.PhoneNo,
                     UserId = result.Id,
-                    RoleTypeId = result.RoleId,
+                    RoleId = result.RoleId,
                     FirstName = result.FirstName,
                     LastName = result.LastName,
                     IsRegistrationCompleted = result.IsRegistrationCompleted

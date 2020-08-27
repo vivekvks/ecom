@@ -1,5 +1,6 @@
 ﻿using Ecom.Models.Enums;
 using Ecom.Utility;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -9,13 +10,13 @@ using System.Text;
 
 namespace Ecom.Authentication
 {
-    public class JWTHelper : IJWTHelper
+    public class JwtHelper : IJwtHelper
     {
-        public string GenerateJWTToken(TokenData tokenData, Jwt jwt)
+        public string GenerateJWTToken(JwtTokenModel tokenData, Jwt jwt)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.SecretKey));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            var claims = new[] { new Claim("role", tokenData.RoleTypeId.Description()) };
+            var claims = new[] { new Claim("role", tokenData.RoleId.Description()) };
 
             var token = new JwtSecurityToken
             (
@@ -26,7 +27,7 @@ namespace Ecom.Authentication
                 signingCredentials: credentials
             );
 
-            token.Payload.Add("data", tokenData);
+            token.Payload.Add("user", tokenData);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }

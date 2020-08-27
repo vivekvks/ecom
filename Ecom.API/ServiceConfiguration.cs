@@ -7,6 +7,7 @@ using Ecom.Service;
 using Ecom.Service.Interface;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 
 namespace Ecom.API
 {
@@ -17,7 +18,6 @@ namespace Ecom.API
     {
         public static void AddCustomServices(this IServiceCollection services)
         {
-            services.AddScoped<IJWTHelper, JWTHelper>();
             services.AddScoped<IRepository, Repository>();
             services.AddScoped<ICategoryMasterService, CategoryMasterService>();
             services.AddScoped<ICategoryMasterRepository, CategoryMasterRepository>();
@@ -39,6 +39,38 @@ namespace Ecom.API
         {
             services.AddMvc(op => op.Filters.Add(typeof(ValidateFilterAttribute)))
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<FluentAssemblyCommon>());
+        }
+
+        public static void AddSwagger(this IServiceCollection services)
+        {
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "ECOM API",
+                    Version = "v1"
+                });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please insert JWT with Bearer into field",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+                {
+                  new OpenApiSecurityScheme
+                  {
+                    Reference = new OpenApiReference
+                    {
+                      Type = ReferenceType.SecurityScheme,
+                      Id = "Bearer"
+                    }
+                   },
+                   new string[] { }
+                 }});
+            });
         }
     }
 }
