@@ -14,15 +14,9 @@ namespace Ecom.Service
         {
             _categoryReturnMasterRepository = categoryReturnMasterRepository;
         }
-        public async Task<List<GetCategoryReturnMasterResponse>> Get()
+        public List<CategoryReturnMasterGetResponse> List()
         {
-            var categoryReturnMasters = await _categoryReturnMasterRepository.GetAllAsync(true);
-            return categoryReturnMasters.Select(x => new GetCategoryReturnMasterResponse
-            {
-                Id = x.Id,
-                NoOfDays = x.NoOfDays,
-                Description = x.Description
-            }).ToList();
+            return _categoryReturnMasterRepository.List();
         }
     }
 }

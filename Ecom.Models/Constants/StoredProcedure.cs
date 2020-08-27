@@ -27,5 +27,9 @@
         #region CategoryAttributeMaster
         public const string CATEGORYATTRIBUTEMASTER_ADDRANGE = "CategoryAttributeMaster_AddRange";
         #endregion
+
+        #region CategoryReturnMaster
+        public const string CATEGORYRETURNMASTER_LIST = "CategoryReturnMaster_List";
+        #endregion
     }
 }
