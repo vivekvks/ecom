@@ -8,5 +8,7 @@ namespace Ecom.Data.Interface
         UserRegistrationResponse UserRegistration(UserRegistrationRequest request);
 
         UserGetResponse UserGet(int userId);
+
+        UserGetResponse Login(LoginRequest loginRequest);
     }
 }

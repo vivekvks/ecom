@@ -1,4 +1,5 @@
 ﻿using Ecom.Models.Enums;
+using System.Text.Json.Serialization;
 
 namespace Ecom.Models.Response
 {
@@ -8,7 +9,9 @@ namespace Ecom.Models.Response
         public string PhoneNo { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        internal string Password { get; set; }
-        internal RoleType RoleId { get; set; } = RoleType.Admin;
+        [JsonIgnore]
+        public string Password { get; set; }
+        [JsonIgnore]
+        public RoleType RoleId { get; set; } 
     }
 }

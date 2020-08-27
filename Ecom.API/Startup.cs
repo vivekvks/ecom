@@ -27,41 +27,19 @@ namespace Ecom.API
         {
             services.Configure<ConfigurationOption>(Configuration);
 
-            ConnectionStringHelper.EComDatabase = Configuration.GetConnectionString("EComDatabase");
-
             var configuration = new ConfigurationOption();
             Configuration.Bind(configuration);
 
             services.AddControllers();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-            {
-                options.RequireHttpsMetadata = false;
-                options.SaveToken = true;
+            // Add JWT authentication and authorization
+            services.AddJWTAuthentication(configuration);
+            services.AddJWTAuthorization();
 
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = configuration.Jwt.Issuer,
-                    ValidAudience = configuration.Jwt.Audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.Jwt.SecretKey)),
-                    ClockSkew = TimeSpan.Zero
-                };
-            });
-
-            services.AddAuthorization(config =>
-            {
-                config.AddPolicy(Policies.Admin, Policies.AdminPolicy());
-                config.AddPolicy(Policies.User, Policies.UserPolicy());
-            });
-
-            //add services and repository services in custom service
+            // Add services and repository services in custom service
             services.AddCustomServices();
 
-            //add fluent validation
+            // Add fluent validation
             services.AddFluentValidation();
 
             // Register the Swagger generator, defining 1 or more Swagger documents

@@ -5,7 +5,8 @@ namespace Ecom.Service.Interface
 {
     public interface IUserMasterService
     {
-        UserRegistrationResponse UserRegistration(UserRegistrationRequest request);
-        UserGetResponse UserGet(int userId);
+        UserRegistrationResponse Registration(UserRegistrationRequest request);
+        UserGetResponse Get(int userId);
+        bool Login(LoginRequest request);
     }
 }

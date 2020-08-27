@@ -20,7 +20,7 @@ namespace Ecom.API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] UserRegistrationRequest request)
         {
-            var response = _userMasterService.UserRegistration(request);
+            var response = _userMasterService.Registration(request);
             return Ok(new ApiResponse(string.Format(ResponseMessage.REGISTER_SUCCESS, "User"), response));
         }
 
@@ -28,7 +28,7 @@ namespace Ecom.API.Controllers
         [HttpGet]
         public IActionResult Get([FromRoute] int id)
         {
-            var response = _userMasterService.UserGet(id);
+            var response = _userMasterService.Get(id);
             return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "User"), response));
         }
     }
