@@ -23,5 +23,9 @@
         #region CategoryVarianceDetails
         public const string CATEGORYVARIANCEDETAILS_ADDRANGE = "CategoryVarianceDetails_AddRange";
         #endregion
+
+        #region CategoryAttributeMaster
+        public const string CATEGORYATTRIBUTEMASTER_ADDRANGE = "CategoryAttributeMaster_AddRange";
+        #endregion
     }
 }
