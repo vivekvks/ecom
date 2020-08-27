@@ -5,15 +5,15 @@ using System.Text;
 
 namespace Ecom.Models.Request
 {
-    public class LoginRequest
+    public class UserLoginRequest
     {
         public string UserName { get; set; }
         public string Password { get; set; }
     }
 
-    public class LoginRequestValidator : AbstractValidator<LoginRequest>
+    public class UserLoginRequestValidator : AbstractValidator<UserLoginRequest>
     {
-        public LoginRequestValidator()
+        public UserLoginRequestValidator()
         {
             RuleFor(x => x.UserName).NotEmpty();
             RuleFor(x => x.Password).NotEmpty();

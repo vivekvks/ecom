@@ -27,9 +27,9 @@ namespace Ecom.Data.Implementation.Repository
             return _repository.ExecResult<UserGetResponse>(StoredProcedure.USER_GET, parameters).FirstOrDefault();
         }
 
-        public UserGetResponse Login(LoginRequest request)
+        public UserGetResponse Login(UserLoginRequest request)
         {
-            var parameters = _repository.GetParameters(request);
+            DynamicParameters parameters = new DynamicParameters();
             parameters.Add("UserName", request.UserName);
             return _repository.ExecResult<UserGetResponse>(StoredProcedure.USER_LOGIN, parameters).FirstOrDefault();
         }

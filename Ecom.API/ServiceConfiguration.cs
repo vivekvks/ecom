@@ -1,4 +1,5 @@
 ﻿using Ecom.API.Attributes;
+using Ecom.Authentication;
 using Ecom.Data.Implementation.Repository;
 using Ecom.Data.Interface;
 using Ecom.Models.Request;
@@ -16,6 +17,7 @@ namespace Ecom.API
     {
         public static void AddCustomServices(this IServiceCollection services)
         {
+            services.AddScoped<IJWTHelper, JWTHelper>();
             services.AddScoped<IRepository, Repository>();
             services.AddScoped<ICategoryMasterService, CategoryMasterService>();
             services.AddScoped<ICategoryMasterRepository, CategoryMasterRepository>();

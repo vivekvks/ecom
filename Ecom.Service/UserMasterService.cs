@@ -1,25 +1,29 @@
-﻿using Ecom.Data.Interface;
+﻿using Ecom.Authentication;
+using Ecom.Data.Interface;
 using Ecom.Models.Request;
 using Ecom.Models.Response;
 using Ecom.Service.Interface;
 using Ecom.Utility;
 using Microsoft.Extensions.Options;
+using System;
 
 namespace Ecom.Service
 {
     public class UserMasterService : IUserMasterService
     {
         private readonly IUserMasterRepository _userMasterRepository;
-        private Settings _settings { get; set; }
-        public UserMasterService(IUserMasterRepository userMasterRepository, IOptions<ConfigurationOption> settings)
+        private readonly IJWTHelper _jWTHelper;
+        private ConfigurationOption _settings { get; set; }
+        public UserMasterService(IUserMasterRepository userMasterRepository, IOptions<ConfigurationOption> settings, IJWTHelper jWTHelper)
         {
             _userMasterRepository = userMasterRepository;
-            _settings = settings.Value.Settings;
+            _settings = settings.Value;
+            _jWTHelper = jWTHelper;
         }
 
         public UserRegistrationResponse Registration(UserRegistrationRequest request)
         {
-            request.Password = StringHelper.Encrypt(request.Password, _settings.SaltKey);
+            request.Password = StringHelper.Encrypt(request.Password, _settings.Settings.SaltKey);
             return _userMasterRepository.UserRegistration(request);
         }
 
@@ -28,13 +32,37 @@ namespace Ecom.Service
             return _userMasterRepository.UserGet(userId);
         }
 
-        public bool Login(LoginRequest request)
+        public UserLoginResponse Login(UserLoginRequest request)
         {
-            var result = _userMasterRepository.Login(request);
-            if (request.Password != StringHelper.Decrypt(result.Password, _settings.SaltKey))
-                throw new System.Exception("Username or password is incorrect");
-            //To Do Token Generation
-            return true;
+            try
+            {
+                var result = _userMasterRepository.Login(request);
+                if (request.Password != StringHelper.Decrypt(result.Password, _settings.Settings.SaltKey))
+                    return null;
+
+                TokenData tokenData = new TokenData()
+                {
+                    Email = result.Email,
+                    PhoneNo = result.PhoneNo,
+                    UserId = result.Id,
+                    RoleTypeId = result.RoleId,
+                    FirstName = result.FirstName,
+                    LastName = result.LastName,
+                    IsRegistrationCompleted = result.IsRegistrationCompleted
+                };
+
+                UserLoginResponse loginResponse = new UserLoginResponse()
+                {
+                    Token = _jWTHelper.GenerateJWTToken(tokenData, _settings.Jwt),
+                    Type = "bearer"
+                };
+
+                return loginResponse;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

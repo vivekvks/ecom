@@ -8,5 +8,6 @@
         public const string REGISTER_SUCCESS = "{0} registered successfully.";
         public const string GET_SUCCESS = "{0} detail received successfully.";
         public const string LOGIN_SUCEESS = "Login Successfully.";
+        public const string LOGIN_FAILED = "Username or password is incorrect.";
     }
 }

@@ -12,6 +12,8 @@ namespace Ecom.Models.Response
         [JsonIgnore]
         public string Password { get; set; }
         [JsonIgnore]
-        public RoleType RoleId { get; set; } 
+        public RoleType RoleId { get; set; }
+        public int Id { get; set; }
+        public bool IsRegistrationCompleted { get; set; }
     }
 }
