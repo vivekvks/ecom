@@ -65,7 +65,7 @@ namespace Ecom.Data.Implementation.Repository
             }
         }
 
-        public DynamicParameters GetBaseParameters<T>(T request)
+        public DynamicParameters GetJsonParameter<T>(T request)
         {
             DbParamModel dbParamModel = new DbParamModel()
             {

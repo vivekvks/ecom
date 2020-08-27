@@ -16,7 +16,7 @@ namespace Ecom.Data.Implementation.Repository
 
         public CompanyRegistrationResponse CompanyRegistration(CompanyRegistrationRequest request)
         {
-            return _repository.ExecResult<CompanyRegistrationResponse>(StoredProcedure.COMPANY_REGISTRATION, _repository.GetBaseParameters(request)).FirstOrDefault();
+            return _repository.ExecResult<CompanyRegistrationResponse>(StoredProcedure.COMPANY_REGISTRATION, _repository.GetJsonParameter(request)).FirstOrDefault();
         }
     }
 }

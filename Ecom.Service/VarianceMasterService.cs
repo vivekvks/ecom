@@ -1,5 +1,6 @@
 ﻿using Ecom.Data.Interface;
 using Ecom.Models.Response;
+using Ecom.Models.Response.VarianceMaster;
 using Ecom.Service.Interface;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,15 +15,9 @@ namespace Ecom.Service
         {
             _varianceMasterRepository = varianceMasterRepository;
         }
-        public async Task<List<GetVarianceMasterResponse>> Get()
+        public List<VarianceMasterGetResponse> List()
         {
-            var varianceMasters = await _varianceMasterRepository.GetAllAsync(true);
-            return varianceMasters.Select(x => new GetVarianceMasterResponse
-            {
-                Id = x.Id,
-                VarianceName = x.VarianceName,
-                IncludeInTitle = x.IncludeInTitle
-            }).ToList();
+            return _varianceMasterRepository.List();
         }
     }
 }

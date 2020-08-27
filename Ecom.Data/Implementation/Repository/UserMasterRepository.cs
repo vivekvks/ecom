@@ -17,7 +17,7 @@ namespace Ecom.Data.Implementation.Repository
 
         public UserRegistrationResponse UserRegistration(UserRegistrationRequest request)
         {
-            return _repository.ExecResult<UserRegistrationResponse>(StoredProcedure.USER_REGISTRATION, _repository.GetBaseParameters(request)).FirstOrDefault();
+            return _repository.ExecResult<UserRegistrationResponse>(StoredProcedure.USER_REGISTRATION, _repository.GetJsonParameter(request)).FirstOrDefault();
         }
 
         public UserGetResponse UserGet(int userId)

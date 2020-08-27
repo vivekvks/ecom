@@ -5,6 +5,6 @@ namespace Ecom.Service.Interface
 {
     public interface ICategoryAttributeMasterService
     {
-        bool Create(List<CategoryAttributeMasterAddRequest> addRequests);
+        List<int> AddRange(List<CategoryAttributeMasterAddRequest> requests);
     }
 }

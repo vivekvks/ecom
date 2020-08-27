@@ -16,24 +16,17 @@ namespace Ecom.Service
             _categoryAttributeMasterRepository = categoryAttributeMasterRepository;
         }
 
-        public bool Create(List<CategoryAttributeMasterAddRequest> addRequests)
+        public List<int> AddRange(List<CategoryAttributeMasterAddRequest> requests)
         {
-            if (addRequests.Any(x => !x.CategoryId.HasValue))
+            if (requests.Any(x => !x.CategoryId.HasValue))
             {
                 throw new ApiException("CategoryId is required.");
             }
-            if (addRequests.Any(x => string.IsNullOrEmpty(x.Name)))
+            if (requests.Any(x => string.IsNullOrEmpty(x.Name)))
             {
                 throw new ApiException("Name is required.");
             }
-
-            string jsonString = JsonConvert.SerializeObject(addRequests);
-            var param = new
-            {
-                JsonString = jsonString
-            };
-            _categoryAttributeMasterRepository.Exec("CategoryAttributeMaster_Insert", param);
-            return true;
+            return _categoryAttributeMasterRepository.AddRange(requests);
         }
     }
 }

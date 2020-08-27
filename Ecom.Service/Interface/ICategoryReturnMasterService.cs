@@ -6,6 +6,6 @@ namespace Ecom.Service.Interface
 {
     public interface ICategoryReturnMasterService
     {
-        Task<List<GetCategoryReturnMasterResponse>> Get();
+        List<CategoryReturnMasterGetResponse> List();
     }
 }

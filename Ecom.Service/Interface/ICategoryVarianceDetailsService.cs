@@ -5,6 +5,6 @@ namespace Ecom.Service.Interface
 {
     public interface ICategoryVarianceDetailsService
     {
-        bool Create(List<CategoryVarianceDetailsAddRequest> addRequests);
+        List<int> AddRange(List<CategoryVarianceDetailsAddRequest> requests);
     }
 }

@@ -3,6 +3,8 @@ using Ecom.Models.Constants;
 using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
 namespace Ecom.API.Controllers
@@ -28,6 +30,12 @@ namespace Ecom.API.Controllers
         {
             var categoryMaster = _categoryMasterService.Get(id);
             return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "CategoryMaster"), categoryMaster));
+        }
+        [HttpGet("{id}/hierarchies")]
+        public IActionResult GetHierarchyJson(int id, bool isRoot)
+        {
+            var categoryHierarchy = _categoryMasterService.GetHierarchyJson(id, isRoot);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "CategoryMaster"), categoryHierarchy));
         }
 
         [HttpPost]

@@ -6,6 +6,7 @@ namespace Ecom.Service.Interface
     public interface ICategoryMasterService
     {
         public CategoryMasterGetResponse Get(int id);
+        string GetHierarchyJson(int id, bool isRoot);
         int Add(CategoryMasterAddRequest request);
         int Update(int id, CategoryMasterUpdateRequest request);
         bool Delete(int id);
