@@ -1,4 +1,6 @@
-﻿using Ecom.Service.Interface;
+﻿using AutoWrapper.Wrappers;
+using Ecom.Models.Constants;
+using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -17,10 +19,10 @@ namespace Ecom.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IActionResult Get()
         {
-            var response = await _varianceMasterService.Get();
-            return Ok(response);
+            var response = _varianceMasterService.List();
+            return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "VarianceMaster"), response));
         }
     }
 }

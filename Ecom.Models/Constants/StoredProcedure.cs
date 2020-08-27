@@ -31,5 +31,9 @@
         #region CategoryReturnMaster
         public const string CATEGORYRETURNMASTER_LIST = "CategoryReturnMaster_List";
         #endregion
+
+        #region VarianceMaster
+        public const string VARIANCEMASTER_LIST = "VarianceMaster_List";
+        #endregion
     }
 }
