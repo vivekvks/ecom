@@ -19,5 +19,9 @@
         public const string CATEGORYMASTER_UPDATE = "CategoryMaster_Update";
         public const string CATEGORYMASTER_DELETE = "CategoryMaster_Delete";
         #endregion
+
+        #region CategoryVarianceDetails
+        public const string CATEGORYVARIANCEDETAILS_ADDRANGE = "CategoryVarianceDetails_AddRange";
+        #endregion
     }
 }

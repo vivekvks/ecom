@@ -1,6 +1,4 @@
-﻿using Ecom.Models.Enums;
-using Ecom.Models.Web;
-using Ecom.Utility;
+﻿using Ecom.Utility;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;

@@ -1,4 +1,6 @@
-﻿using Ecom.Models.Request;
+﻿using AutoWrapper.Wrappers;
+using Ecom.Models.Constants;
+using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -18,10 +20,10 @@ namespace Ecom.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] List<CategoryVarianceDetailsAddRequest> addRequests)
+        public IActionResult Post([FromBody] List<CategoryVarianceDetailsAddRequest> requests)
         {
-            var response = _categoryVarianceDetailsService.Create(addRequests);
-            return Ok(response);
+            var response = _categoryVarianceDetailsService.AddRange(requests);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.ADD_SUCCESS, "CategoryVarianceDetails"), response));
         }
     }
 }

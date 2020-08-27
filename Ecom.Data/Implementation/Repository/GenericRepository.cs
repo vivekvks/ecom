@@ -167,7 +167,7 @@ namespace Ecom.Data.Implementation
                     else
                         list.Add(registro.First());
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     //ILog log_ = log4net.LogManager.GetLogger("log4Net");
                     //log_.Error(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType + "-" + System.Reflection.MethodBase.GetCurrentMethod().ToString() + "-" + e.Message + "-SOURCE: " + e.Source);

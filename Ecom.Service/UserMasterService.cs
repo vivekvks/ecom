@@ -10,16 +10,16 @@ namespace Ecom.Service
     public class UserMasterService : IUserMasterService
     {
         private readonly IUserMasterRepository _userMasterRepository;
-        private Settings _settings { get; set; }
+        private Settings Settings { get; set; }
         public UserMasterService(IUserMasterRepository userMasterRepository, IOptions<ConfigurationOption> settings)
         {
             _userMasterRepository = userMasterRepository;
-            _settings = settings.Value.Settings;
+            Settings = settings.Value.Settings;
         }
 
         public UserRegistrationResponse Registration(UserRegistrationRequest request)
         {
-            request.Password = StringHelper.Encrypt(request.Password, _settings.SaltKey);
+            request.Password = StringHelper.Encrypt(request.Password, Settings.SaltKey);
             return _userMasterRepository.UserRegistration(request);
         }
 
@@ -31,7 +31,7 @@ namespace Ecom.Service
         public bool Login(LoginRequest request)
         {
             var result = _userMasterRepository.Login(request);
-            if (request.Password != StringHelper.Decrypt(result.Password, _settings.SaltKey))
+            if (request.Password != StringHelper.Decrypt(result.Password, Settings.SaltKey))
                 throw new System.Exception("Username or password is incorrect");
             //To Do Token Generation
             return true;

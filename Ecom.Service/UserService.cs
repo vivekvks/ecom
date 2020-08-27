@@ -1,8 +1,4 @@
-﻿using Ecom.Models.Response;
-using Ecom.Models.Web;
-using Ecom.Service.Interface;
-using System;
-using System.Threading.Tasks;
+﻿using Ecom.Service.Interface;
 
 namespace Ecom.Service
 {
@@ -13,11 +9,6 @@ namespace Ecom.Service
         {
             return false;
 
-        }
-
-        public Task<Response<LoginResponse>> RegisterAsync(UserVM user)
-        {
-            throw new NotImplementedException();
         }
     }
 }
