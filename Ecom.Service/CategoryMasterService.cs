@@ -17,9 +17,9 @@ namespace Ecom.Service
         {
             return _categoryMasterRepository.Get(id);
         }
-        public string GetHierarchyJson(int id, bool isRoot)
+        public string GetHierarchyJson()
         {
-            return _categoryMasterRepository.GetHierarchyJson(id, isRoot);
+            return _categoryMasterRepository.GetHierarchyJson();
         }
 
         public int Add(CategoryMasterAddRequest request)

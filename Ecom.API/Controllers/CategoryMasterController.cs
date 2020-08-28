@@ -31,10 +31,10 @@ namespace Ecom.API.Controllers
             var categoryMaster = _categoryMasterService.Get(id);
             return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "CategoryMaster"), categoryMaster));
         }
-        [HttpGet("{id}/hierarchies")]
-        public IActionResult GetHierarchyJson(int id, bool isRoot)
+        [HttpGet("hierarchies")]
+        public IActionResult GetHierarchyJson()
         {
-            var categoryHierarchy = _categoryMasterService.GetHierarchyJson(id, isRoot);
+            var categoryHierarchy = _categoryMasterService.GetHierarchyJson();
             return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "CategoryMaster"), categoryHierarchy));
         }
 
