@@ -21,12 +21,9 @@ namespace Ecom.Data.Implementation.Repository
             return _repository.ExecResult<CategoryMasterGetResponse>(StoredProcedure.CATEGORYMASTER_GET, parameters).FirstOrDefault();
         }
 
-        public string GetHierarchyJson(int id, bool isRoot)
+        public string GetHierarchyJson()
         {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("Id", id);
-            parameters.Add("IsRoot", isRoot ? 1 : 2);
-            return _repository.ExecResult<string>("CategoryMaster_GetHierarchyJson", parameters).FirstOrDefault();
+            return _repository.ExecResult<string>("CategoryMaster_GetHierarchyJson", null).FirstOrDefault();
         }
 
         public int Add(CategoryMasterAddRequest request)
