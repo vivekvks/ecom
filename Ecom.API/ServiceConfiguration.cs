@@ -6,6 +6,7 @@ using Ecom.Models.Request;
 using Ecom.Service;
 using Ecom.Service.Interface;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
@@ -73,6 +74,20 @@ namespace Ecom.API
                    new string[] { }
                  }});
             });
+        }
+
+        public static void AddCorsPolicy(this IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+            });
+        }
+
+        public static void UseCorsPolicy(this IApplicationBuilder app)
+        {
+            app.UseCors("CorsPolicy");
         }
     }
 }
