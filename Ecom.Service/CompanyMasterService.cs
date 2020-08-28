@@ -7,15 +7,20 @@ namespace Ecom.Service
 {
     public class CompanyMasterService : ICompanyMasterService
     {
-        private readonly ICompanyMasterRepository _CompanyMasterRepository;
-        public CompanyMasterService(ICompanyMasterRepository CompanyMasterRepository)
+        private readonly ICompanyMasterRepository _companyMasterRepository;
+        public CompanyMasterService(ICompanyMasterRepository companyMasterRepository)
         {
-            _CompanyMasterRepository = CompanyMasterRepository;
+            _companyMasterRepository = companyMasterRepository;
         }
 
         public CompanyRegistrationResponse CompanyRegistration(CompanyRegistrationRequest request)
         {
-            return _CompanyMasterRepository.CompanyRegistration(request);
+            return _companyMasterRepository.CompanyRegistration(request);
+        }
+
+        public CompanyGetResponse CompanyGet(int companyId)
+        {
+            return _companyMasterRepository.CompanyGet(companyId);
         }
     }
 }

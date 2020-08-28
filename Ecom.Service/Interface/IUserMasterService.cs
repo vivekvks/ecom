@@ -7,6 +7,6 @@ namespace Ecom.Service.Interface
     {
         UserRegistrationResponse Registration(UserRegistrationRequest request);
         UserGetResponse Get(int userId);
-        bool Login(LoginRequest request);
+        UserLoginResponse Login(UserLoginRequest request);
     }
 }

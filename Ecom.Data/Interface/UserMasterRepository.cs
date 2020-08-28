@@ -9,6 +9,6 @@ namespace Ecom.Data.Interface
 
         UserGetResponse UserGet(int userId);
 
-        UserGetResponse Login(LoginRequest loginRequest);
+        UserGetResponse Login(UserLoginRequest loginRequest);
     }
 }

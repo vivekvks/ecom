@@ -1,4 +1,6 @@
-﻿using Ecom.Utility;
+﻿using Ecom.Models.Enums;
+using Ecom.Utility;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -8,24 +10,24 @@ using System.Text;
 
 namespace Ecom.Authentication
 {
-    public class JWTHelper
+    public class JwtHelper : IJwtHelper
     {
-        public string GenerateJWTToken(TokenData tokenData, IConfiguration _config)
+        public string GenerateJWTToken(JwtTokenModel tokenData, Jwt jwt)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:SecretKey"]));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.SecretKey));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            var claims = new[] { new Claim("role", tokenData.RoleTypeId.Description()) };
+            var claims = new[] { new Claim("role", tokenData.RoleId.Description()) };
 
             var token = new JwtSecurityToken
             (
-                issuer: _config["Jwt:Issuer"],
-                audience: _config["Jwt:Audience"],
+                issuer: jwt.Issuer,
+                audience: jwt.Audience,
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(int.Parse(_config["Jwt:Expiry"])),
+                expires: DateTime.Now.AddMinutes(jwt.Expiry),
                 signingCredentials: credentials
             );
 
-            token.Payload.Add("data", tokenData);
+            token.Payload.Add("user", tokenData);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }

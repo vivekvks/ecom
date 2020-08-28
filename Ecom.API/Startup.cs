@@ -8,7 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Ecom.API
@@ -32,9 +34,10 @@ namespace Ecom.API
 
             services.AddControllers();
 
-            // Add JWT authentication and authorization
+            // Add JWT authentication, authorization and reader
             services.AddJWTAuthentication(configuration);
             services.AddJWTAuthorization();
+            services.AddJWTTokenReader();
 
             // Add services and repository services in custom service
             services.AddCustomServices();
@@ -42,8 +45,8 @@ namespace Ecom.API
             // Add fluent validation
             services.AddFluentValidation();
 
-            // Register the Swagger generator, defining 1 or more Swagger documents
-            services.AddSwaggerGen();
+            // Add swagger gen
+            services.AddSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
