@@ -35,5 +35,9 @@
         #region VarianceMaster
         public const string VARIANCEMASTER_LIST = "VarianceMaster_List";
         #endregion
+
+        #region ProductListing 
+        public const string ProductListing_Get = "Product_Get";
+        #endregion
     }
 }

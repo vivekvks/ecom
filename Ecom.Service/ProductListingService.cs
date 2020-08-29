@@ -14,5 +14,13 @@ namespace Ecom.Service
         {
             _productListingRepository = productListingRepository;
         }
+
+        public string Get(string listingText)
+        {
+            if (string.IsNullOrWhiteSpace(listingText))
+                throw new Exception("The ListingText is required");
+
+            return _productListingRepository.Get(listingText);
+        }
     }
 }

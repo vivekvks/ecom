@@ -6,5 +6,6 @@ namespace Ecom.Service.Interface
 {
     public interface IProductListingService
     {
+        string Get(string listingText);
     }
 }

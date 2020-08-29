@@ -1,6 +1,11 @@
-﻿using Ecom.Data.Interface;
+﻿using Dapper;
+using Ecom.Data.Interface;
+using Ecom.Data.Models;
+using Ecom.Models.Constants;
+using Ecom.Models.Response;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Ecom.Data.Implementation.Repository
@@ -11,6 +16,13 @@ namespace Ecom.Data.Implementation.Repository
         public ProductListingRepository(IRepository repository)
         {
             _repository = repository;
+        }
+
+        public string Get(string listingText)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("ListingText", listingText);
+            return _repository.ExecResult<BaseResult>(StoredProcedure.ProductListing_Get, parameters).FirstOrDefault().JsonData;
         }
     }
 }
