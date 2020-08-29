@@ -2,6 +2,7 @@
 using Ecom.Data.Interface;
 using Ecom.Models.Request;
 using Ecom.Service.Interface;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,13 @@ namespace Ecom.Service
 
         public List<int> AddRange(List<CategoryVarianceDetailsAddRequest> requests)
         {
+            //var validateRequest = new CategoryVarianceDetailRequest
+            //{
+            //    CategoryVarianceDetails = requests
+            //};
+            //CategoryVarianceDetailRequestValidator validator = new CategoryVarianceDetailRequestValidator();
+            //validator.ValidateAndThrow(validateRequest);
+
             if (requests.Any(x => !x.VarianceMasterId.HasValue && string.IsNullOrEmpty(x.VarianceMasterName)))
             {
                 throw new ApiException("Variance details can not be null.");
