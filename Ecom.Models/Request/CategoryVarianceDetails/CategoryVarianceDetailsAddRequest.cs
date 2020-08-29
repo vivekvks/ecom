@@ -18,11 +18,10 @@ namespace Ecom.Models.Request
     {
         public CategoryVarianceDetailRequestValidator()
         {
-            //RuleForEach(x => x.Requests).NotNull();
             RuleForEach(x => x.CategoryVarianceDetails).ChildRules(requests =>
             {
-                requests.RuleFor(x => x.CategoryId).NotNull();
-                requests.RuleFor(x => x.VarianceMasterId).NotNull().When(x => string.IsNullOrEmpty(x.VarianceMasterName)).WithMessage("VarianceMasterId {CollectionIndex} is required.");
+                requests.RuleFor(x => x.CategoryId).NotEmpty();
+                requests.RuleFor(x => x.VarianceMasterId).NotEmpty().When(x => string.IsNullOrEmpty(x.VarianceMasterName)).WithMessage("VarianceMasterId {CollectionIndex} is required.");
             });
         }
     }

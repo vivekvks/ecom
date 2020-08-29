@@ -19,16 +19,12 @@ namespace Ecom.Service
 
         public List<int> AddRange(List<CategoryVarianceDetailsAddRequest> requests)
         {
-            var validateRequest = new CategoryVarianceDetailRequest
-            {
-                CategoryVarianceDetails = requests
-            };
-            CategoryVarianceDetailRequestValidator validator = new CategoryVarianceDetailRequestValidator();
-
-            var results = validator.Validate(validateRequest);
-            validator.ValidateAndThrow(validateRequest);
-
-           
+            //var validateRequest = new CategoryVarianceDetailRequest
+            //{
+            //    CategoryVarianceDetails = requests
+            //};
+            //CategoryVarianceDetailRequestValidator validator = new CategoryVarianceDetailRequestValidator();
+            //validator.ValidateAndThrow(validateRequest);
 
             if (requests.Any(x => !x.VarianceMasterId.HasValue && string.IsNullOrEmpty(x.VarianceMasterName)))
             {
