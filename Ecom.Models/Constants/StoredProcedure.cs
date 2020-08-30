@@ -37,7 +37,22 @@
         #endregion
 
         #region ProductListing 
-        public const string ProductListing_Get = "Product_Get";
+        public const string PRODUCTLISTING_GET = "Product_Get";
+        #endregion
+
+        #region QuestionMaster
+        public const string QUESTIONMASTER_GET = "QuestionMaster_Get";
+        public const string QUESTIONMASTER_ADD = "QuestionMaster_Add";
+        public const string QUESTIONMASTER_UPDATE = "QuestionMaster_Update";
+        public const string QUESTIONMASTER_DELETE = "QuestionMaster_Delete";
+        public const string QUESTIONMASTER_LIST = "QuestionMaster_List";
+        #endregion
+
+        #region AnswerMaster
+        public const string ANSWERMASTER_GET = "AnswerMaster_Get";
+        public const string ANSWERMASTER_ADD = "AnswerMaster_Add";
+        public const string ANSWERMASTER_UPDATE = "AnswerMaster_Update";
+        public const string ANSWERMASTER_DELETE = "AnswerMaster_Delete";
         #endregion
     }
 }

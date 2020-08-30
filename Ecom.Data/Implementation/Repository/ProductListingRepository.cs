@@ -22,7 +22,7 @@ namespace Ecom.Data.Implementation.Repository
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("ListingText", listingText);
-            return _repository.ExecResult<BaseResult>(StoredProcedure.ProductListing_Get, parameters).FirstOrDefault().JsonData;
+            return _repository.ExecResult<BaseResult>(StoredProcedure.PRODUCTLISTING_GET, parameters).FirstOrDefault().JsonData;
         }
     }
 }

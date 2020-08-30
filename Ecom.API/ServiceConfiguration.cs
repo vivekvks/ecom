@@ -36,6 +36,8 @@ namespace Ecom.API
             services.AddScoped<ICompanyMasterService, CompanyMasterService>();
             services.AddScoped<IProductListingRepository, ProductListingRepository>();
             services.AddScoped<IProductListingService, ProductListingService>();
+            services.AddScoped<IQuestionMasterRepository, QuestionMasterRepository>();
+            services.AddScoped<IQuestionMasterService, QuestionMasterService>();
         }
 
         public static void AddFluentValidation(this IServiceCollection services)
