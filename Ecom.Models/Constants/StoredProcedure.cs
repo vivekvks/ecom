@@ -55,6 +55,7 @@
         public const string ANSWERMASTER_ADD = "AnswerMaster_Add";
         public const string ANSWERMASTER_UPDATE = "AnswerMaster_Update";
         public const string ANSWERMASTER_DELETE = "AnswerMaster_Delete";
+        public const string ANSWERMASTER_LIKEUNLIKE = "Answer_Reaction_Save";
         #endregion
     }
 }
