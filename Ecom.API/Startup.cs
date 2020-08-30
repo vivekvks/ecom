@@ -27,6 +27,8 @@ namespace Ecom.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add Cors policy
+            services.AddCorsPolicy();
             services.Configure<ConfigurationOption>(Configuration);
 
             var configuration = new ConfigurationOption();
@@ -48,13 +50,13 @@ namespace Ecom.API
             // Add swagger gen
             services.AddSwagger();
 
-            // Add Cors policy
-            services.AddCorsPolicy();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCorsPolicy();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -78,7 +80,7 @@ namespace Ecom.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ECOM API V1");
             });
 
-            app.UseCorsPolicy();
+           
         }
     }
 }

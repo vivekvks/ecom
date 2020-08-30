@@ -7,6 +7,7 @@ namespace Ecom.Service.Interface
 {
     public interface IProductListingService
     {
+        string Get(string listingText);
         List<int> AddRange(List<ProductListingRequest> requests);
     }
 }

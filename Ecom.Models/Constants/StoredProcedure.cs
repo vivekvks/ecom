@@ -37,9 +37,9 @@
         public const string VARIANCEMASTER_LIST = "VarianceMaster_List";
         #endregion
 
-        #region ProductListingR
+        #region ProductListing 
+        public const string ProductListing_Get = "Product_Get";
         public const string PRODUCTLISTING_ADDRANGE = "ProductListing_AddRange";
         #endregion
-
     }
 }

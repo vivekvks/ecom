@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoWrapper.Wrappers;
+using Ecom.Models.Constants;
 using Ecom.Models.Request;
 using Ecom.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Ecom.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductListingController : ControllerBase
     {
         private readonly IProductListingService _productListingService;
@@ -19,7 +21,14 @@ namespace Ecom.API.Controllers
         {
             _productListingService = productListingService;
         }
-        // POST api/<ProductListingController>
+        
+        [HttpGet]
+        [Route("detail")]
+        public IActionResult GetProduct([FromQuery]string listingText)
+        {
+            var response = _productListingService.Get(listingText);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "ProductListing"), response));
+        }
         [HttpPost]
         public IActionResult Post([FromBody] List<ProductListingRequest> requests)
         {
