@@ -15,6 +15,7 @@
 
         #region CategoryMaster
         public const string CATEGORYMASTER_GET = "CategoryMaster_Get";
+        public const string CATEGORYMASTER_GETHIERARCHYJSON = "CategoryMaster_GetHierarchyJson";
         public const string CATEGORYMASTER_ADD = "CategoryMaster_Add";
         public const string CATEGORYMASTER_UPDATE = "CategoryMaster_Update";
         public const string CATEGORYMASTER_DELETE = "CategoryMaster_Delete";
@@ -35,5 +36,10 @@
         #region VarianceMaster
         public const string VARIANCEMASTER_LIST = "VarianceMaster_List";
         #endregion
+
+        #region ProductListingR
+        public const string PRODUCTLISTING_ADDRANGE = "ProductListing_AddRange";
+        #endregion
+
     }
 }

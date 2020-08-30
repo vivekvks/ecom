@@ -23,7 +23,7 @@ namespace Ecom.Data.Implementation.Repository
 
         public string GetHierarchyJson()
         {
-            return _repository.ExecResult<string>("CategoryMaster_GetHierarchyJson", null).FirstOrDefault();
+            return _repository.ExecResult<string>(StoredProcedure.CATEGORYMASTER_GETHIERARCHYJSON, null).FirstOrDefault();
         }
 
         public int Add(CategoryMasterAddRequest request)

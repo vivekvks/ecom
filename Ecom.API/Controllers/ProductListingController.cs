@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,8 +21,10 @@ namespace Ecom.API.Controllers
         }
         // POST api/<ProductListingController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] List<ProductListingRequest> requests)
         {
+            var response = _productListingService.AddRange(requests);
+            return Ok(response);
         }
     }
 }
