@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoWrapper.Wrappers;
 using Ecom.Models.Constants;
+using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,12 @@ namespace Ecom.API.Controllers
         {
             var response = _productListingService.Get(listingText);
             return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "ProductListing"), response));
+        }
+        [HttpPost]
+        public IActionResult Post([FromBody] List<ProductListingRequest> requests)
+        {
+            var response = _productListingService.AddRange(requests);
+            return Ok(response);
         }
     }
 }

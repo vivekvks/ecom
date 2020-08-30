@@ -1,4 +1,5 @@
 ﻿using Ecom.Data.Interface;
+using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,10 @@ namespace Ecom.Service
                 throw new Exception("The ListingText is required");
 
             return _productListingRepository.Get(listingText);
+        }
+        public List<int> AddRange(List<ProductListingRequest> requests)
+        {
+            return _productListingRepository.AddRange(requests);
         }
     }
 }
