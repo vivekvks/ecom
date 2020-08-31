@@ -37,9 +37,9 @@ namespace Ecom.Service
             _answerMasterRepository.Delete(id, userId);
         }
         
-        public AnswerReactionSaveResponse SaveReaction(int userId, int answerId, AnswerReactionType type)
+        public AnswerReactionSaveResponse SaveReaction(AnswerReactionRequest request)
         {
-            return _answerMasterRepository.SaveReaction(userId, answerId, type);
+            return _answerMasterRepository.SaveReaction(request);
         }
     }
 }

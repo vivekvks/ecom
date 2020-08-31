@@ -13,6 +13,6 @@ namespace Ecom.Service.Interface
         AnswerMasterAddResponse Add(AnswerMasterAddRequest request);
         AnswerMasterUpdateResponse Update(AnswerMasterUpdateRequest request);
         void Delete(int id, int userId);
-        AnswerReactionSaveResponse SaveReaction(int userId, int answerId, AnswerReactionType type);
+        AnswerReactionSaveResponse SaveReaction(AnswerReactionRequest request);
     }
 }

@@ -44,13 +44,10 @@ namespace Ecom.Data.Implementation.Repository
             _repository.ExecResult<int>(StoredProcedure.ANSWERMASTER_DELETE, parameters);
         }
 
-        public AnswerReactionSaveResponse SaveReaction(int userId, int answerId, AnswerReactionType type)
+        public AnswerReactionSaveResponse SaveReaction(AnswerReactionRequest request)
         {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("Id", answerId);
-            parameters.Add("UserId", userId);
-            parameters.Add("Type", type);
-            return _repository.ExecResult<AnswerReactionSaveResponse>(StoredProcedure.ANSWERMASTER_LIKEUNLIKE, parameters).FirstOrDefault();
+            var parameters = _repository.GetParameters(request);
+            return _repository.ExecResult<AnswerReactionSaveResponse>(StoredProcedure.ANSWERREACTION_SAVE, parameters).FirstOrDefault();
         }
     }
 }

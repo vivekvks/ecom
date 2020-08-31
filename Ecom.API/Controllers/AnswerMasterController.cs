@@ -56,11 +56,13 @@ namespace Ecom.API.Controllers
             return Ok(new ApiResponse(string.Format(ResponseMessage.DELETE_SUCCESS, "AnswerMaster")));
         }
 
-        [HttpPut("{id:int}/reaction/{type:int}")]
-        public IActionResult SaveReaction([FromRoute] int id, [FromRoute] AnswerReactionType type)
+        [HttpPut("{id:int}/reaction")]
+        public IActionResult SaveReaction([FromRoute] int id, [FromBody] AnswerReactionRequest request)
         {
-            _answerMasterService.SaveReaction(_jwtReader.UserId, id, type);
-            return Ok(new ApiResponse(string.Format(ResponseMessage.UPDATE_SUCCESS, "AnswerMaster reaction")));
+            request.UserId = _jwtReader.UserId;
+            request.Id = id;
+            _answerMasterService.SaveReaction(request);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.UPDATE_SUCCESS, "Answer reaction")));
         }
     }
 }
