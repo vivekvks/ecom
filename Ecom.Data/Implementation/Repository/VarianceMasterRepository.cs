@@ -1,10 +1,8 @@
 ﻿using Ecom.Data.Interface;
 using Ecom.Models.Constants;
 using Ecom.Models.Response.VarianceMaster;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Ecom.Data.Implementation.Repository
 {

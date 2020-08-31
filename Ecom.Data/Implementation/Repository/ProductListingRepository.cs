@@ -2,12 +2,9 @@
 using Ecom.Data.Interface;
 using Ecom.Data.Models;
 using Ecom.Models.Constants;
-using Ecom.Models.Response;
 using Ecom.Models.Request;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Ecom.Data.Implementation.Repository
 {

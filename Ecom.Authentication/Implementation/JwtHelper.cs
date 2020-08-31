@@ -1,7 +1,4 @@
-﻿using Ecom.Models.Enums;
-using Ecom.Utility;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
+﻿using Ecom.Utility;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;

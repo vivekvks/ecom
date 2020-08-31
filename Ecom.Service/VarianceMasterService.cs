@@ -1,10 +1,7 @@
 ﻿using Ecom.Data.Interface;
-using Ecom.Models.Response;
 using Ecom.Models.Response.VarianceMaster;
 using Ecom.Service.Interface;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Ecom.Service
 {

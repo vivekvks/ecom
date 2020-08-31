@@ -3,7 +3,6 @@ using Ecom.Authentication;
 using Ecom.Models.Constants;
 using Ecom.Models.Request;
 using Ecom.Service.Interface;
-using Ecom.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

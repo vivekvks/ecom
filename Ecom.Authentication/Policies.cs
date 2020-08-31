@@ -1,6 +1,4 @@
-﻿using Ecom.Models.Enums;
-using Ecom.Utility;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 
 namespace Ecom.Authentication
 {

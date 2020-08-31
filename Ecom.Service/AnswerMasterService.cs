@@ -3,9 +3,6 @@ using Ecom.Models.Enums;
 using Ecom.Models.Request;
 using Ecom.Models.Response;
 using Ecom.Service.Interface;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Ecom.Service
 {

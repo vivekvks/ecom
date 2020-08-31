@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ecom.Models.Response.VarianceMaster
+﻿namespace Ecom.Models.Response.VarianceMaster
 {
     public class VarianceMasterGetResponse
     {

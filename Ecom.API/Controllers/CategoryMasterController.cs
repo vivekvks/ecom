@@ -3,8 +3,6 @@ using Ecom.Models.Constants;
 using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
 namespace Ecom.API.Controllers

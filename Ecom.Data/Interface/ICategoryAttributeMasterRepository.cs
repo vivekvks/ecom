@@ -1,5 +1,4 @@
-﻿using Ecom.Data.Models;
-using Ecom.Models.Request;
+﻿using Ecom.Models.Request;
 using System.Collections.Generic;
 
 namespace Ecom.Data.Interface

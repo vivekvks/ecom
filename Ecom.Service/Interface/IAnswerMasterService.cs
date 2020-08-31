@@ -1,9 +1,6 @@
 ﻿using Ecom.Models.Enums;
 using Ecom.Models.Request;
 using Ecom.Models.Response;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Ecom.Service.Interface
 {
