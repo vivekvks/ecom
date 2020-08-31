@@ -2,7 +2,6 @@
 using Ecom.Data.Interface;
 using Ecom.Models.Request;
 using Ecom.Service.Interface;
-using FluentValidation;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Collections.Generic;
 using System.Linq;

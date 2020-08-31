@@ -1,5 +1,4 @@
 ﻿using Ecom.Data.Interface;
-using Ecom.Data.Models;
 using Ecom.Models.Constants;
 using Ecom.Models.Response;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ namespace Ecom.Data.Implementation.Repository
     public class CategoryReturnMasterRepository : ICategoryReturnMasterRepository
     {
         private readonly IRepository _repository;
-        public CategoryReturnMasterRepository(IRepository repository) 
+        public CategoryReturnMasterRepository(IRepository repository)
         {
             _repository = repository;
         }

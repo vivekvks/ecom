@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ecom.Models.Request
+﻿namespace Ecom.Models.Request
 {
     public class ProductListingVarianceDetailsRequest
     {

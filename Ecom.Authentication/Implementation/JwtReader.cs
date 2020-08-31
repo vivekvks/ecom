@@ -2,10 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Text;
 
 namespace Ecom.Authentication
 {
@@ -17,10 +15,9 @@ namespace Ecom.Authentication
         public JwtReader(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
-            _jwtTokenModel = JwtTokenModel; 
         }
 
-        public int UserId { get { return _jwtTokenModel.UserId;  } }
+        public int UserId { get { return _jwtTokenModel.UserId; } }
 
         public string Email { get { return _jwtTokenModel.Email; } }
 

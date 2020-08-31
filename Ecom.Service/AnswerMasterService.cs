@@ -3,9 +3,6 @@ using Ecom.Models.Enums;
 using Ecom.Models.Request;
 using Ecom.Models.Response;
 using Ecom.Service.Interface;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Ecom.Service
 {
@@ -36,7 +33,7 @@ namespace Ecom.Service
         {
             _answerMasterRepository.Delete(id, userId);
         }
-        
+
         public AnswerReactionSaveResponse SaveReaction(int userId, int answerId, AnswerReactionType type)
         {
             return _answerMasterRepository.SaveReaction(userId, answerId, type);

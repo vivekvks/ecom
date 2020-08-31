@@ -1,5 +1,4 @@
 ﻿using Ecom.Data.Interface;
-using Ecom.Data.Models;
 using Ecom.Models.Constants;
 using Ecom.Models.Request;
 using System.Collections.Generic;
