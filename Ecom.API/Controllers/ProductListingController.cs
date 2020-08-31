@@ -32,8 +32,9 @@ namespace Ecom.API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] List<ProductListingRequest> requests)
         {
+            var str = Newtonsoft.Json.JsonConvert.SerializeObject(requests);
             var response = _productListingService.AddRange(requests);
-            return Ok(response);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.ADD_SUCCESS, "ProductListing"), response));
         }
     }
 }
