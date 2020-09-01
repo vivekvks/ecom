@@ -6,6 +6,6 @@ namespace Ecom.Data.Interface
     public interface IProductListingRepository
     {
         string Get(string listingText);
-        List<int> AddRange(List<ProductListingRequest> requests);
+        List<int> AddRange(List<ProductListingAddRequest> requests);
     }
 }
