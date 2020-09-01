@@ -57,5 +57,13 @@
         public const string ANSWERMASTER_DELETE = "AnswerMaster_Delete";
         public const string ANSWERREACTION_SAVE = "AnswerReaction_Save";
         #endregion
+
+        #region ReviewMaster
+        public const string REVIEWMASTER_LIST = "ReviewMaster_List";
+        public const string REVIEWMASTER_ADD = "ReviewMaster_Add";
+        public const string REVIEWMASTER_UPDATE = "ReviewMaster_Update";
+        public const string REVIEWMASTER_DELETE = "ReviewMaster_Delete";
+        public const string REVIEWREACTION_SAVE = "ReviewReaction_Save";
+        #endregion
     }
 }

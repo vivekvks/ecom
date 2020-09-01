@@ -6,14 +6,14 @@ using System.Text.Json.Serialization;
 
 namespace Ecom.Models.Request
 {
-    public class AnswerReactionRequest
+    public class ReviewReactionRequest
     {
-        public ReactionType Type { get; set; }
-
         [JsonIgnore]
         public int UserId { get; set; }
 
         [JsonIgnore]
         public int Id { get; set; }
+
+        public ReactionType Type { get; set; }
     }
 }

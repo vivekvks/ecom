@@ -14,7 +14,7 @@ namespace Ecom.Service
             _questionMasterRepository = QuestionMasterRepository;
         }
 
-        public QuestionMasterGetResponse Get(int id)
+        public string Get(int id)
         {
             return _questionMasterRepository.Get(id);
         }
@@ -34,7 +34,7 @@ namespace Ecom.Service
             _questionMasterRepository.Delete(id, userId);
         }
 
-        public List<QuestionMasterListResponse> List(int productListingId)
+        public string List(int productListingId)
         {
             return _questionMasterRepository.List(productListingId);
         }

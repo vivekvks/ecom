@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Ecom.Data.Interface;
+using Ecom.Data.Models;
 using Ecom.Models.Constants;
 using Ecom.Models.Request;
 using Ecom.Models.Response;
@@ -15,11 +16,11 @@ namespace Ecom.Data.Implementation.Repository
         {
             _repository = repository;
         }
-        public QuestionMasterGetResponse Get(int id)
+        public string Get(int id)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("Id", id);
-            return _repository.ExecResult<QuestionMasterGetResponse>(StoredProcedure.QUESTIONMASTER_GET, parameters).FirstOrDefault();
+            return _repository.ExecResult<BaseResult>(StoredProcedure.QUESTIONMASTER_GET, parameters).FirstOrDefault()?.JsonData;
         }
 
         public QuestionMasterAddResponse Add(QuestionMasterAddRequest request)
@@ -41,11 +42,11 @@ namespace Ecom.Data.Implementation.Repository
             _repository.ExecResult<int>(StoredProcedure.QUESTIONMASTER_DELETE, parameters);
         }
 
-        public List<QuestionMasterListResponse> List(int productListingId)
+        public string List(int productListingId)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("ProductListingId", productListingId);
-            return _repository.ExecResult<QuestionMasterListResponse>(StoredProcedure.QUESTIONMASTER_LIST, parameters);
+            return _repository.ExecResult<BaseResult>(StoredProcedure.QUESTIONMASTER_LIST, parameters).FirstOrDefault()?.JsonData;
         }
     }
 }

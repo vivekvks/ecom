@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using FluentValidation;
+using System.Text.Json.Serialization;
 
 namespace Ecom.Models.Request
 {
@@ -11,5 +12,13 @@ namespace Ecom.Models.Request
 
         [JsonIgnore]
         public int UserId { get; set; }
+    }
+
+    public class QuestionMasterUpdateRequestValidator : AbstractValidator<QuestionMasterUpdateRequest>
+    {
+        public QuestionMasterUpdateRequestValidator()
+        {
+            RuleFor(x => x.QuestionText).NotEmpty().MaximumLength(500);
+        }
     }
 }
