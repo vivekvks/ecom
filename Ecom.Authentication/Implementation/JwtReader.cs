@@ -15,6 +15,7 @@ namespace Ecom.Authentication
         public JwtReader(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
+            _jwtTokenModel = JwtTokenModel;
         }
 
         public int UserId { get { return _jwtTokenModel.UserId; } }
