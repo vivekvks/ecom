@@ -4,7 +4,6 @@ using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace Ecom.API.Controllers
 {
@@ -27,10 +26,9 @@ namespace Ecom.API.Controllers
             return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "ProductListing"), response));
         }
         [HttpPost]
-        public IActionResult Post([FromBody] List<ProductListingRequest> requests)
+        public IActionResult Post([FromBody] ProductListingRequest request)
         {
-            var str = Newtonsoft.Json.JsonConvert.SerializeObject(requests);
-            var response = _productListingService.AddRange(requests);
+            var response = _productListingService.AddRange(request.ProductListings);
             return Ok(new ApiResponse(string.Format(ResponseMessage.ADD_SUCCESS, "ProductListing"), response));
         }
     }

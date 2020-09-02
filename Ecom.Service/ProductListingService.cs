@@ -22,7 +22,7 @@ namespace Ecom.Service
 
             return _productListingRepository.Get(listingText);
         }
-        public List<int> AddRange(List<ProductListingRequest> requests)
+        public List<int> AddRange(List<ProductListingAddRequest> requests)
         {
             return _productListingRepository.AddRange(requests);
         }

@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using Ecom.Data.Interface;
 using Ecom.Models.Constants;
-using Ecom.Models.Enums;
 using Ecom.Models.Request;
 using Ecom.Models.Response;
 using System.Linq;

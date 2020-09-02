@@ -2,7 +2,6 @@
 using Ecom.Models.Request;
 using Ecom.Models.Response;
 using Ecom.Service.Interface;
-using System.Collections.Generic;
 
 namespace Ecom.Service
 {

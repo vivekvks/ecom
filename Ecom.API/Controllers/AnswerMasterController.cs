@@ -1,7 +1,6 @@
 ﻿using AutoWrapper.Wrappers;
 using Ecom.Authentication;
 using Ecom.Models.Constants;
-using Ecom.Models.Enums;
 using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
