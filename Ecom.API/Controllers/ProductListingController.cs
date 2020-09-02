@@ -4,7 +4,6 @@ using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace Ecom.API.Controllers
 {

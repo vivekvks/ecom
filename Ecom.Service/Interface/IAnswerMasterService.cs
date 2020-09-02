@@ -1,5 +1,4 @@
-﻿using Ecom.Models.Enums;
-using Ecom.Models.Request;
+﻿using Ecom.Models.Request;
 using Ecom.Models.Response;
 
 namespace Ecom.Service.Interface
