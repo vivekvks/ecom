@@ -1,5 +1,6 @@
 ﻿using Ecom.Data.Interface;
 using Ecom.Models.Request;
+using Ecom.Models.Response;
 using Ecom.Service.Interface;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,16 @@ namespace Ecom.Service
         public List<int> AddRange(List<ProductListingAddRequest> requests)
         {
             return _productListingRepository.AddRange(requests);
+        }
+
+        public void Update(ProductListingUpdateRequest request)
+        {
+            _productListingRepository.Update(request);
+        }
+
+        public List<ProductListingResponse> List(int pageSize, int pageNumber, int userId)
+        {
+            return _productListingRepository.List(pageSize, pageNumber, userId);
         }
     }
 }

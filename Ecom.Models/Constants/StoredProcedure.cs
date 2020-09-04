@@ -40,6 +40,8 @@
         #region ProductListing 
         public const string PRODUCTLISTING_ADDRANGE = "ProductListing_AddRange";
         public const string PRODUCTLISTING_GET = "Product_Get";
+        public const string PRODUCTLISTING_UPDATE = "ProductListing_Update";
+        public const string PRODUCTLISTING_GETBYUSERID = "ProductListing_GetByUserID";
         #endregion
 
         #region QuestionMaster
