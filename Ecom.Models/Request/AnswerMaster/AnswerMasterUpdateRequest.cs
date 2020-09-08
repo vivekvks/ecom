@@ -11,8 +11,6 @@ namespace Ecom.Models.Request
         [JsonIgnore]
         public int Id { get; set; }
 
-        public int QuestionId { get; set; }
-
         public string AnswerText { get; set; }
     }
 
@@ -21,7 +19,6 @@ namespace Ecom.Models.Request
         public AnswerMasterUpdateRequestValidator()
         {
             RuleFor(x => x.AnswerText).NotEmpty().MaximumLength(1000);
-            RuleFor(x => x.QuestionId).NotEmpty();
         }
     }
 }

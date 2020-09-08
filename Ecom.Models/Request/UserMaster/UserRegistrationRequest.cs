@@ -1,5 +1,6 @@
 ﻿using Ecom.Models.Enums;
 using FluentValidation;
+using System.Text.Json.Serialization;
 
 namespace Ecom.Models.Request
 {
@@ -10,7 +11,7 @@ namespace Ecom.Models.Request
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Password { get; set; }
-        internal RoleType RoleId { get; set; }
+        public RoleType RoleId { get; set; }
     }
 
     public class UserRegistrationRequestValidator : AbstractValidator<UserRegistrationRequest>
@@ -23,6 +24,7 @@ namespace Ecom.Models.Request
             RuleFor(x => x.Password).NotEmpty().Length(4, 128).When(x => !string.IsNullOrEmpty(x.Email));
             RuleFor(x => x.FirstName).MaximumLength(50);
             RuleFor(x => x.LastName).MaximumLength(50);
+            RuleFor(x => x.RoleId).NotEmpty();
         }
     }
 }
