@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,5 +14,18 @@ namespace Ecom.Models.Request
         public DateTime EndDate { get; set; }
         public string Text { get; set; }
         public float SharePercentage { get; set; }
+    }
+    public class OfferMasterAddRequestValidator : AbstractValidator<OfferMasterAddRequest>
+    {
+        public OfferMasterAddRequestValidator()
+        {
+            RuleFor(x => x.OfferTypeId).NotEmpty();
+            RuleFor(x => x.ProductId).NotEmpty();
+            RuleFor(x => x.Percentage).NotEmpty().InclusiveBetween(1, 100);
+            RuleFor(x => x.StartDate).NotEmpty();
+            RuleFor(x => x.EndDate).NotEmpty();
+            RuleFor(x => x.Text).NotEmpty();
+            RuleFor(x => x.SharePercentage).InclusiveBetween(0, 100);
+        }
     }
 }
