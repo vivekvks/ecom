@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ecom.Models.Request
 {
-    public class OfferMasterAddRequest
+    public class OfferMasterUpdateRequest
     {
         public int OfferTypeId { get; set; }
         public int ProductId { get; set; }

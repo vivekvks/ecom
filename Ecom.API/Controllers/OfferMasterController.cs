@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoWrapper.Wrappers;
 using Ecom.Models.Constants;
+using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,19 +37,24 @@ namespace Ecom.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] string value)
+        public IActionResult Post([FromBody] OfferMasterAddRequest request)
         {
-            return Ok();
+            var response = _offerMasterService.Add(request);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.ADD_SUCCESS, "OfferMaster"), response));
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] OfferMasterUpdateRequest request)
         {
+            var response = _offerMasterService.Update(id, request);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.UPDATE_SUCCESS, "OfferMaster"), response));
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            var response = _offerMasterService.Delete(id);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.DELETE_SUCCESS, "OfferMaster"), response));
         }
     }
 }

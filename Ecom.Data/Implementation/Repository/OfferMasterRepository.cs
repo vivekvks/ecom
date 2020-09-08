@@ -1,5 +1,7 @@
-﻿using Ecom.Data.Interface;
+﻿using Dapper;
+using Ecom.Data.Interface;
 using Ecom.Models.Constants;
+using Ecom.Models.Request;
 using Ecom.Models.Response;
 using System;
 using System.Collections.Generic;
@@ -24,6 +26,24 @@ namespace Ecom.Data.Implementation.Repository
         public OfferMasterGetResponse Get(int id)
         {
             return _repository.ExecResult<OfferMasterGetResponse>(StoredProcedure.OFFERMASTER_GET, null).FirstOrDefault();
+        }
+        public int Add(OfferMasterAddRequest request)
+        {
+            var parameters = _repository.GetParameters(request);
+            return _repository.ExecResult<int>(StoredProcedure.OFFERMASTER_ADD, parameters).FirstOrDefault();
+        }
+        public int Update(int id, OfferMasterUpdateRequest request)
+        {
+            var parameters = _repository.GetParameters(request);
+            parameters.Add("Id", id);
+            return _repository.ExecResult<int>(StoredProcedure.OFFERMASTER_ADD, parameters).FirstOrDefault();
+        }
+        public bool Delete(int id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("Id", id);
+            _repository.ExecResult<int>(StoredProcedure.OFFERMASTER_ADD, parameters).FirstOrDefault();
+            return true;
         }
     }
 }

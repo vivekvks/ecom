@@ -1,4 +1,5 @@
 ﻿using Ecom.Data.Interface;
+using Ecom.Models.Request;
 using Ecom.Models.Response;
 using Ecom.Service.Interface;
 using System;
@@ -22,6 +23,18 @@ namespace Ecom.Service
         public OfferMasterGetResponse Get(int id)
         {
             return _offerMasterRepository.Get(id);
+        }
+        public int Add(OfferMasterAddRequest request)
+        {
+            return _offerMasterRepository.Add(request);
+        }
+        public int Update(int id, OfferMasterUpdateRequest request)
+        {
+            return _offerMasterRepository.Update(id, request);
+        }
+        public bool Delete(int id)
+        {
+            return _offerMasterRepository.Delete(id);
         }
     }
 }
