@@ -69,11 +69,11 @@
         #endregion
 
         #region OfferMaster
-        public const string OFFERMASTER_LIST = "OfferMasterr_List";
-        public const string OFFERMASTER_GET = "OfferMasterr_Get";
-        public const string OFFERMASTER_ADD = "OfferMasterr_Add";
-        public const string OFFERMASTER_UPDATE = "OfferMasterr_Update";
-        public const string OFFERMASTER_DELETE = "OfferMasterr_Delete";
+        public const string OFFERMASTER_LIST = "OfferMaster_List";
+        public const string OFFERMASTER_GET = "OfferMaster_Get";
+        public const string OFFERMASTER_ADD = "OfferMaster_Add";
+        public const string OFFERMASTER_UPDATE = "OfferMaster_Update";
+        public const string OFFERMASTER_DELETE = "OfferMaster_Delete";
 
 
         #endregion

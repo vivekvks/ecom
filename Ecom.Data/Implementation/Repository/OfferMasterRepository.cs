@@ -25,7 +25,9 @@ namespace Ecom.Data.Implementation.Repository
 
         public OfferMasterGetResponse Get(int id)
         {
-            return _repository.ExecResult<OfferMasterGetResponse>(StoredProcedure.OFFERMASTER_GET, null).FirstOrDefault();
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("Id", id);
+            return _repository.ExecResult<OfferMasterGetResponse>(StoredProcedure.OFFERMASTER_GET, parameters).FirstOrDefault();
         }
         public int Add(OfferMasterAddRequest request)
         {
@@ -36,13 +38,13 @@ namespace Ecom.Data.Implementation.Repository
         {
             var parameters = _repository.GetParameters(request);
             parameters.Add("Id", id);
-            return _repository.ExecResult<int>(StoredProcedure.OFFERMASTER_ADD, parameters).FirstOrDefault();
+            return _repository.ExecResult<int>(StoredProcedure.OFFERMASTER_UPDATE, parameters).FirstOrDefault();
         }
         public bool Delete(int id)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("Id", id);
-            _repository.ExecResult<int>(StoredProcedure.OFFERMASTER_ADD, parameters).FirstOrDefault();
+            _repository.ExecResult<int>(StoredProcedure.OFFERMASTER_DELETE, parameters).FirstOrDefault();
             return true;
         }
     }

@@ -40,14 +40,16 @@ namespace Ecom.API.Controllers
         public IActionResult Post([FromBody] OfferMasterAddRequest request)
         {
             var response = _offerMasterService.Add(request);
-            return Ok(new ApiResponse(string.Format(ResponseMessage.ADD_SUCCESS, "OfferMaster"), response));
+            var offerMaster = _offerMasterService.Get(response);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "OfferMaster"), offerMaster));
         }
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] OfferMasterUpdateRequest request)
         {
             var response = _offerMasterService.Update(id, request);
-            return Ok(new ApiResponse(string.Format(ResponseMessage.UPDATE_SUCCESS, "OfferMaster"), response));
+            var offerMaster = _offerMasterService.Get(response);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.UPDATE_SUCCESS, "OfferMaster"), offerMaster));
         }
 
         [HttpDelete("{id}")]
