@@ -38,7 +38,7 @@ namespace Ecom.API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] string value)
         {
-
+            return Ok();
         }
 
         [HttpPut("{id}")]
