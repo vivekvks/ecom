@@ -65,5 +65,15 @@
         public const string REVIEWMASTER_DELETE = "ReviewMaster_Delete";
         public const string REVIEWREACTION_SAVE = "ReviewReaction_Save";
         #endregion
+
+        #region OfferMaster
+        public const string OFFERMASTER_LIST = "OfferMasterr_List";
+        public const string OFFERMASTER_GET = "OfferMasterr_Get";
+        public const string OFFERMASTER_ADD = "OfferMasterr_Add";
+        public const string OFFERMASTER_UPDATE = "OfferMasterr_Update";
+        public const string OFFERMASTER_DELETE = "OfferMasterr_Delete";
+
+
+        #endregion
     }
 }
