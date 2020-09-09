@@ -1,6 +1,5 @@
 ﻿using Ecom.Models.Enums;
 using FluentValidation;
-using System.Text.Json.Serialization;
 
 namespace Ecom.Models.Request
 {

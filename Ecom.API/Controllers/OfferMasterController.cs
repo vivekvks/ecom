@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoWrapper.Wrappers;
+﻿using AutoWrapper.Wrappers;
 using Ecom.Models.Constants;
 using Ecom.Models.Request;
 using Ecom.Service.Interface;
