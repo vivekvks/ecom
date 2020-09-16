@@ -16,13 +16,16 @@ namespace Ecom.Utility
         private const int Keysize = 128;
         // This constant determines the number of iterations for the password bytes generation function.
         private const int DerivationIterations = 1000;
+        private static string _salt = "ekeeperd22296a92"; // Random
+        private static string _vector = "2229uv69twd00tjk"; // Random
+
 
         public static string Encrypt(string plainText, string passPhrase)
         {
             // Salt and IV is randomly generated each time, but is preprended to encrypted cipher text
             // so that the same Salt and IV values can be used when decrypting.  
-            var saltStringBytes = Generate128BitsOfRandomEntropy();
-            var ivStringBytes = Generate128BitsOfRandomEntropy();
+            var saltStringBytes = Encoding.ASCII.GetBytes(_salt);
+            var ivStringBytes = Encoding.ASCII.GetBytes(_vector);
             var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
             using (var password = new Rfc2898DeriveBytes(passPhrase, saltStringBytes, DerivationIterations))
             {
@@ -46,7 +49,7 @@ namespace Ecom.Utility
                                 cipherTextBytes = cipherTextBytes.Concat(memoryStream.ToArray()).ToArray();
                                 memoryStream.Close();
                                 cryptoStream.Close();
-                                return Convert.ToBase64String(cipherTextBytes);
+                                return Convert.ToBase64String(cipherTextBytes).Trim();
                             }
                         }
                     }
@@ -60,9 +63,9 @@ namespace Ecom.Utility
             // [32 bytes of Salt] + [16 bytes of IV] + [n bytes of CipherText]
             var cipherTextBytesWithSaltAndIv = Convert.FromBase64String(cipherText);
             // Get the saltbytes by extracting the first 16 bytes from the supplied cipherText bytes.
-            var saltStringBytes = cipherTextBytesWithSaltAndIv.Take(Keysize / 8).ToArray();
+            var saltStringBytes = Encoding.ASCII.GetBytes(_salt);
             // Get the IV bytes by extracting the next 16 bytes from the supplied cipherText bytes.
-            var ivStringBytes = cipherTextBytesWithSaltAndIv.Skip(Keysize / 8).Take(Keysize / 8).ToArray();
+            var ivStringBytes = Encoding.ASCII.GetBytes(_vector);
             // Get the actual cipher text bytes by removing the first 64 bytes from the cipherText string.
             var cipherTextBytes = cipherTextBytesWithSaltAndIv.Skip((Keysize / 8) * 2).Take(cipherTextBytesWithSaltAndIv.Length - ((Keysize / 8) * 2)).ToArray();
 

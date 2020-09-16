@@ -22,7 +22,7 @@ namespace Ecom.Service
 
         public UserRegistrationResponse Registration(UserRegistrationRequest request)
         {
-            request.Password = StringHelper.Encrypt(request.Password, _settings.Settings.SaltKey);
+            request.Password = StringHelper.Encrypt(request.Password, _settings.Settings.SaltKey).Trim();
             return _userMasterRepository.UserRegistration(request);
         }
 
@@ -36,7 +36,10 @@ namespace Ecom.Service
             try
             {
                 var result = _userMasterRepository.Login(request);
-                if (request.Password != StringHelper.Decrypt(result.Password, _settings.Settings.SaltKey))
+                //if (request.Password != StringHelper.Decrypt(result.Password, _settings.Settings.SaltKey))
+                //    return null;
+
+                if (result.Password != StringHelper.Encrypt(request.Password, _settings.Settings.SaltKey))
                     return null;
 
                 JwtTokenModel tokenData = new JwtTokenModel()
