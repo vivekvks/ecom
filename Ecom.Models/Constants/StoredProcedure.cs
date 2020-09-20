@@ -77,5 +77,9 @@
 
 
         #endregion
+
+        #region OrderMaster
+        public const string ORDERMASTER_ADD = "OrderMaster_Add";
+        #endregion
     }
 }
