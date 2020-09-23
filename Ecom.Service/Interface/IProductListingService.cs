@@ -10,5 +10,7 @@ namespace Ecom.Service.Interface
         List<int> AddRange(List<ProductListingAddRequest> requests);
         void Update(ProductListingUpdateRequest request);
         List<ProductListingResponse> List(int pageSize, int pageNumber, int userId);
+        List<ProductListingLookupResponse> Lookup(string searchText);
+        ProductListingFacetSearchResponse Search(int pageNumber, int pageSize, string searchText, int? categoryId, string filter, bool includeFacet);
     }
 }

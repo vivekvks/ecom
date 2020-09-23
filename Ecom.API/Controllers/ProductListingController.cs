@@ -5,6 +5,7 @@ using Ecom.Models.Request;
 using Ecom.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Ecom.API.Controllers
@@ -52,6 +53,22 @@ namespace Ecom.API.Controllers
         {
             var response = _productListingService.List(pageSize ?? 10, pageNumber ?? 1, _jwtReader.UserId);
             return Ok(new ApiResponse(string.Format(ResponseMessage.LIST_SUCCESS, "ProductListing"), new { data = response, totalCount = response.FirstOrDefault()?.TotalCount ?? 0 }));
+        }
+
+        [HttpGet]
+        [Route("lookup")]
+        public IActionResult Lookup([FromQuery] string searchText)
+        {
+            var response = _productListingService.Lookup(searchText);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "ProductListing"), response));
+        }
+
+        [HttpGet]
+        [Route("search")]
+        public IActionResult Search([FromQuery] int? pageNumber, [FromQuery] int? pageSize, [FromQuery] string searchText, [FromQuery] int? categoryId, [FromQuery] string filter, [FromQuery] bool includeFacet = true)
+        {
+            var response = _productListingService.Search(pageNumber ?? 1, pageSize ?? 10, searchText, categoryId, filter, includeFacet);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "ProductListing"), response));
         }
     }
 }

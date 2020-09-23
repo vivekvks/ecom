@@ -42,6 +42,8 @@
         public const string PRODUCTLISTING_GET = "Product_Get";
         public const string PRODUCTLISTING_UPDATE = "ProductListing_Update";
         public const string PRODUCTLISTING_GETBYUSERID = "ProductListing_GetByUserID";
+        public const string PRODUCTLISTING_LOOKUP = "ProductListing_Lookup";
+        public const string PRODUCTLISTING_FACETSEARCH = "ProductListing_FacetSearch";
         #endregion
 
         #region QuestionMaster

@@ -95,6 +95,29 @@ namespace Ecom.Data.Implementation.Repository
             return dynamicParameters;
         }
 
+        /// <summary>
+        /// Execute the Given SP with the Parameter and return a multiple result set.
+        /// </summary>
+        /// <typeparam name="RequestModel"></typeparam>
+        /// <param name="spName"></param>
+        /// <param name="requestModel"></param>
+        /// <returns></returns>
+        public Tuple<List<T1>, List<T2>> ExecResult<T1, T2>(string spName, DynamicParameters parameters)
+        {
+            using (var connection = GetDbConnection())
+            {
+                try
+                {
+                    var result = connection.QueryMultiple(spName, parameters, commandType: CommandType.StoredProcedure);
+                    return Tuple.Create(result.Read<T1>().ToList(), result.Read<T2>().ToList());
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         private IDbConnection GetDbConnection()
         {
             var _connection = new SqlConnection(_configuration.GetConnectionString("EComDatabase"));

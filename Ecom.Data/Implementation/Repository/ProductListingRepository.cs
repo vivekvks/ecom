@@ -4,6 +4,7 @@ using Ecom.Data.Models;
 using Ecom.Models.Constants;
 using Ecom.Models.Request;
 using Ecom.Models.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -43,6 +44,25 @@ namespace Ecom.Data.Implementation.Repository
             parameters.Add("PageNumber", pageNumber);
             parameters.Add("UserId", userId);
             return _repository.ExecResult<ProductListingResponse>(StoredProcedure.PRODUCTLISTING_GETBYUSERID, parameters);
+        }
+
+        public List<ProductListingLookupResponse> Lookup(string searchText)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("SearchText", searchText);
+            return _repository.ExecResult<ProductListingLookupResponse>(StoredProcedure.PRODUCTLISTING_LOOKUP, parameters);
+        }
+
+        public Tuple<List<ProductListingFacetSearch>, List<ProductListingFacet>> Search(int pageSize, int pageNumber, string searchText, int? categoryId, string filter, bool includeFacet)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("SearchText", searchText);
+            parameters.Add("CategoryId", categoryId);
+            parameters.Add("IncludeFacet", includeFacet);
+            parameters.Add("PageSize", pageSize);
+            parameters.Add("PageNumber", pageNumber);
+            parameters.Add("VarianceFilter", filter);
+            return _repository.ExecResult<ProductListingFacetSearch, ProductListingFacet>(StoredProcedure.PRODUCTLISTING_FACETSEARCH, parameters);
         }
     }
 }
