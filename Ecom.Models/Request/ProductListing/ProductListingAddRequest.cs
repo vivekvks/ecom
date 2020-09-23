@@ -73,7 +73,7 @@ namespace Ecom.Models.Request
             //RuleFor(x => x.ManufacturingName).NotEmpty();
             //RuleFor(x => x.ImpoterName).NotEmpty();
             //RuleFor(x => x.Hsncode).NotEmpty();
-            RuleFor(x => x.Quantity).NotEmpty();
+            //RuleFor(x => x.Quantity).NotEmpty();
             RuleFor(x => x.MaxOrderQuantity).NotEmpty();
             RuleForEach(x => x.ProductListingVarianceDetails).SetValidator(new ProductListingVarianceDetailsRequestValidator());
         }
