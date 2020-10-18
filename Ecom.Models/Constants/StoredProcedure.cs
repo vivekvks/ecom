@@ -23,10 +23,12 @@
 
         #region CategoryVarianceDetails
         public const string CATEGORYVARIANCEDETAILS_ADDRANGE = "CategoryVarianceDetails_AddRange";
+        public const string CATEGORYVARIANCEDETAILS_GET = "CategoryVarianceDetails_Get";
         #endregion
 
         #region CategoryAttributeMaster
         public const string CATEGORYATTRIBUTEMASTER_ADDRANGE = "CategoryAttributeMaster_AddRange";
+        public const string CATEGORYATTRIBUTEMASTER_GET = "CategoryAttributeMaster_Get";
         #endregion
 
         #region CategoryReturnMaster

@@ -25,5 +25,13 @@ namespace Ecom.API.Controllers
             var response = _categoryVarianceDetailsService.AddRange(requests);
             return Ok(new ApiResponse(string.Format(ResponseMessage.ADD_SUCCESS, "CategoryVarianceDetails"), response));
         }
+
+
+        [HttpGet("{id:int}")]
+        public IActionResult Get([FromRoute] int id)
+        {
+            var response = _categoryVarianceDetailsService.Get(id);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "CategoryVarianceDetails"), response));
+        }
     }
 }

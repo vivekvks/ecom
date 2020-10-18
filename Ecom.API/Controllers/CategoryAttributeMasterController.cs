@@ -23,5 +23,12 @@ namespace Ecom.API.Controllers
             var response = _categoryAttributeMasterService.AddRange(requests);
             return Ok(new ApiResponse(string.Format(ResponseMessage.ADD_SUCCESS, "CategoryAttributeMaster"), response));
         }
+
+        [HttpGet("{id:int}")]
+        public IActionResult Get([FromRoute] int id)
+        {
+            var response = _categoryAttributeMasterService.Get(id);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "CategoryAttributeMaster"), response));
+        }
     }
 }

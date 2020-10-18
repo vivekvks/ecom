@@ -1,6 +1,7 @@
 ﻿using AutoWrapper.Wrappers;
 using Ecom.Data.Interface;
 using Ecom.Models.Request;
+using Ecom.Models.Response;
 using Ecom.Service.Interface;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,11 @@ namespace Ecom.Service
                 throw new ApiException("Name is required.");
             }
             return _categoryAttributeMasterRepository.AddRange(requests);
+        }
+
+        public List<CategoryAttributeMasterGetResponse> Get(int id)
+        {
+            return _categoryAttributeMasterRepository.Get(id);
         }
     }
 }

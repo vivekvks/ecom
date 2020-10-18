@@ -1,6 +1,7 @@
 ﻿using AutoWrapper.Wrappers;
 using Ecom.Data.Interface;
 using Ecom.Models.Request;
+using Ecom.Models.Response;
 using Ecom.Service.Interface;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Collections.Generic;
@@ -30,6 +31,11 @@ namespace Ecom.Service
                 throw new ApiException("Variance details can not be null.");
             }
             return _categoryVarianceDetailsRepository.AddRange(requests);
+        }
+
+        public List<CategoryVarianceDetailsGetResponse> Get(int id)
+        {
+            return _categoryVarianceDetailsRepository.Get(id);
         }
     }
 }
