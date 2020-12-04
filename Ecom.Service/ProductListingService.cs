@@ -76,5 +76,10 @@ namespace Ecom.Service
                 TotalCount = dataSets.Item1.FirstOrDefault()?.TotalCount ?? 0
             };
         }
+
+        public string GetProductDetail(int? id, int categoryId)
+        {
+            return _productListingRepository.GetProductDetail(id, categoryId);
+        }
     }
 }

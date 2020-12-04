@@ -64,5 +64,13 @@ namespace Ecom.Data.Implementation.Repository
             parameters.Add("VarianceFilter", filter);
             return _repository.ExecResult<ProductListingFacetSearch, ProductListingFacet>(StoredProcedure.PRODUCTLISTING_FACETSEARCH, parameters);
         }
+
+        public string GetProductDetail(int? id, int categoryId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("id", id);
+            parameters.Add("categoryId", categoryId);
+            return _repository.ExecResult<BaseResult>(StoredProcedure.PRODUCTLISTING_DETAIL_GET, parameters).FirstOrDefault().JsonData;
+        }
     }
 }

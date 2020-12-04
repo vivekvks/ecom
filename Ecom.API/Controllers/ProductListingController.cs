@@ -70,5 +70,13 @@ namespace Ecom.API.Controllers
             var response = _productListingService.Search(pageNumber ?? 1, pageSize ?? 10, searchText, categoryId, filter, includeFacet);
             return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "ProductListing"), response));
         }
+
+        [HttpGet]
+        [Route("productdetail")]
+        public IActionResult GetProductDetail([FromQuery] int categoryId, [FromQuery] int? id)
+        {
+            var response = _productListingService.GetProductDetail(id, categoryId);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "ProductListing"), response));
+        }
     }
 }
