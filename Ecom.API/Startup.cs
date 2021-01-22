@@ -28,7 +28,7 @@ namespace Ecom.API
             var configuration = new ConfigurationOption();
             Configuration.Bind(configuration);
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
 
             // Add JWT authentication, authorization and reader
             services.AddJWTAuthentication(configuration);
