@@ -8,5 +8,6 @@ namespace Ecom.Data.Interface
     {
         List<int> AddRange(List<CategoryVarianceDetailsAddRequest> requests);
         List<CategoryVarianceDetailsGetResponse> Get(int id);
+        bool Delete(int id);
     }
 }

@@ -30,5 +30,12 @@ namespace Ecom.API.Controllers
             var response = _categoryAttributeMasterService.Get(id);
             return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "CategoryAttributeMaster"), response));
         }
+
+        [HttpDelete("{id:int}")]
+        public IActionResult Delete([FromRoute] int id)
+        {
+            var response = _categoryAttributeMasterService.Delete(id);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.DELETE_SUCCESS, "CategoryAttributeMaster"), response));
+        }
     }
 }

@@ -37,5 +37,10 @@ namespace Ecom.Service
         {
             return _categoryVarianceDetailsRepository.Get(id);
         }
+
+        public bool Delete(int id)
+        {
+            return _categoryVarianceDetailsRepository.Delete(id);
+        }
     }
 }

@@ -33,5 +33,10 @@ namespace Ecom.Service
         {
             return _categoryAttributeMasterRepository.Get(id);
         }
+
+        public bool Delete(int id)
+        {
+            return _categoryAttributeMasterRepository.Delete(id);
+        }
     }
 }

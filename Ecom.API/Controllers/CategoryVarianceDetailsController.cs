@@ -33,5 +33,12 @@ namespace Ecom.API.Controllers
             var response = _categoryVarianceDetailsService.Get(id);
             return Ok(new ApiResponse(string.Format(ResponseMessage.GET_SUCCESS, "CategoryVarianceDetails"), response));
         }
+
+        [HttpDelete("{id:int}")]
+        public IActionResult Delete([FromRoute] int id)
+        {
+            var response = _categoryVarianceDetailsService.Delete(id);
+            return Ok(new ApiResponse(string.Format(ResponseMessage.DELETE_SUCCESS, "CategoryVarianceDetails"), response));
+        }
     }
 }

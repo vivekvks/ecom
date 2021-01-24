@@ -28,5 +28,13 @@ namespace Ecom.Data.Implementation.Repository
             parameters.Add("id", id);
             return _repository.ExecResult<CategoryAttributeMasterGetResponse>(StoredProcedure.CATEGORYATTRIBUTEMASTER_GET, parameters).ToList();
         }
+
+        public bool Delete(int id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("Id", id);
+            _repository.ExecResult<int>(StoredProcedure.CATEGORYATTRIBUTEMASTER_DELETE, parameters);
+            return true;
+        }
     }
 }

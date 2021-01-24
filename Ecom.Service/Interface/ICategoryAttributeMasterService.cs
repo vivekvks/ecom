@@ -8,5 +8,6 @@ namespace Ecom.Service.Interface
     {
         List<int> AddRange(List<CategoryAttributeMasterAddRequest> requests);
         List<CategoryAttributeMasterGetResponse> Get(int id);
+        bool Delete(int id);
     }
 }
