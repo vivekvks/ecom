@@ -88,5 +88,10 @@
         #region OrderMaster
         public const string ORDERMASTER_ADD = "OrderMaster_Add";
         #endregion
+
+        #region Master
+        public const string COUNTRY_LOOKUP = "Country_Lookup";
+        public const string ATTRIBUTEANDVARIANCEVALUE_LOOKUP = "AttributeAndVarianceValue_Lookup";
+        #endregion
     }
 }
