@@ -34,7 +34,7 @@ namespace Ecom.API.Controllers
         public IActionResult TaxLookup()
         {
             var response = _masterService.TaxLookup();
-            return Ok(new ApiResponse(string.Format(ResponseMessage.LIST_SUCCESS, "CountryMaster"), response));
+            return Ok(new ApiResponse(string.Format(ResponseMessage.LIST_SUCCESS, "TaxMaster"), response));
         }
     }
 }
