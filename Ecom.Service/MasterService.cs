@@ -21,5 +21,10 @@ namespace Ecom.Service
         {
             return _masterRepository.CountryLookup();
         }
+
+        public List<TaxLookupResponse> TaxLookup()
+        {
+            return _masterRepository.TaxLookup();
+        }
     }
 }

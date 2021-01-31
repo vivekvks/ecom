@@ -92,6 +92,7 @@
         #region Master
         public const string COUNTRY_LOOKUP = "Country_Lookup";
         public const string ATTRIBUTEANDVARIANCEVALUE_LOOKUP = "AttributeAndVarianceValue_Lookup";
+        public const string TAX_LOOKUP = "Tax_Lookup";
         #endregion
     }
 }

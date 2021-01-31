@@ -25,5 +25,10 @@ namespace Ecom.Data.Implementation.Repository
         {
             return _repository.ExecResult<CountryLookupResponse>(StoredProcedure.COUNTRY_LOOKUP, null).ToList();
         }
+
+        public List<TaxLookupResponse> TaxLookup()
+        {
+            return _repository.ExecResult<TaxLookupResponse>(StoredProcedure.TAX_LOOKUP, null).ToList();
+        }
     }
 }

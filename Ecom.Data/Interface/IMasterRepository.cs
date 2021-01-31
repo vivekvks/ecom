@@ -9,5 +9,6 @@ namespace Ecom.Data.Interface
     {
         string AttributeAndVarianceLookup();
         List<CountryLookupResponse> CountryLookup();
+        List<TaxLookupResponse> TaxLookup();
     }
 }

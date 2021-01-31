@@ -29,5 +29,12 @@ namespace Ecom.API.Controllers
             var response = _masterService.AttributeAndVarianceLookup();
             return Ok(new ApiResponse(string.Format(ResponseMessage.LIST_SUCCESS, "Attribute and variance"), response));
         }
+
+        [HttpGet("tax")]
+        public IActionResult TaxLookup()
+        {
+            var response = _masterService.TaxLookup();
+            return Ok(new ApiResponse(string.Format(ResponseMessage.LIST_SUCCESS, "CountryMaster"), response));
+        }
     }
 }
