@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Ecom.Models.Request
 {
@@ -37,6 +38,8 @@ namespace Ecom.Models.Request
         public int MaxOrderQuantity { get; set; }
 
         public List<ProductListingVarianceDetailsRequest> ProductListingVarianceDetails { get; set; }
+
+        public List<ProductListingAttributeDetailsRequest> ProductListingAttributeDetails { get; set; }
     }
 
     public class ProductListingRequestValidator : AbstractValidator<ProductListingRequest>
@@ -53,7 +56,6 @@ namespace Ecom.Models.Request
             RuleFor(x => x.UserId).NotEmpty();
             RuleFor(x => x.CategoryId).NotEmpty();
             RuleFor(x => x.SellerSKU).NotEmpty();
-            RuleFor(x => x.ListingStatus).NotEmpty();
             RuleFor(x => x.Title).NotEmpty();
             RuleFor(x => x.BrandName).NotEmpty();
             RuleFor(x => x.Description).NotEmpty();
@@ -76,6 +78,17 @@ namespace Ecom.Models.Request
             //RuleFor(x => x.Quantity).NotEmpty();
             RuleFor(x => x.MaxOrderQuantity).NotEmpty();
             RuleForEach(x => x.ProductListingVarianceDetails).SetValidator(new ProductListingVarianceDetailsRequestValidator());
+            RuleForEach(x => x.ProductListingAttributeDetails).SetValidator(new ProductListingAttributeDetailsRequestValidator());
+
+            RuleFor(x => x.ProductListingAttributeDetails)
+                .Must(CheckDuplicateAttributeId)
+                .When(x => x.ProductListingAttributeDetails != null)
+                .WithMessage("Duplicate attribute not allowed");
+        }
+
+        private bool CheckDuplicateAttributeId(List<ProductListingAttributeDetailsRequest> attributeDetailsRequests)
+        {
+            return !attributeDetailsRequests.GroupBy(x => x.AttributeMasterId).Where(grp => grp.Count() > 1).Any();
         }
     }
 
@@ -85,6 +98,15 @@ namespace Ecom.Models.Request
         {
             RuleFor(x => x.VarianceMasterId).NotEmpty();
             RuleFor(x => x.VarianceValueId).NotEmpty().When(x => string.IsNullOrEmpty(x.VarianceValue));
+        }
+    }
+
+    public class ProductListingAttributeDetailsRequestValidator : AbstractValidator<ProductListingAttributeDetailsRequest>
+    {
+        public ProductListingAttributeDetailsRequestValidator()
+        {
+            RuleFor(x => x.AttributeMasterId).NotEmpty();
+            RuleFor(x => x.AttributeValueId).NotEmpty().When(x => string.IsNullOrEmpty(x.AttributeValue));
         }
     }
 }
