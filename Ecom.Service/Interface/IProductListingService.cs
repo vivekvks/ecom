@@ -7,7 +7,7 @@ namespace Ecom.Service.Interface
     public interface IProductListingService
     {
         string Get(string listingText);
-        List<int> AddRange(List<ProductListingAddRequest> requests);
+        List<int> AddRange(List<ProductListingAddRequest> requests, int userId);
         void Update(ProductListingUpdateRequest request);
         List<ProductListingResponse> List(int pageSize, int pageNumber, int userId);
         List<ProductListingLookupResponse> Lookup(string searchText);

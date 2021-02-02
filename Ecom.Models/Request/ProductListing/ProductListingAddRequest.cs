@@ -10,7 +10,7 @@ namespace Ecom.Models.Request
     }
     public class ProductListingAddRequest
     {
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public int CategoryId { get; set; }
         public string SellerSKU { get; set; }
         public bool ListingStatus { get; set; }
@@ -53,7 +53,6 @@ namespace Ecom.Models.Request
     {
         public ProductListingAddRequestValidator()
         {
-            RuleFor(x => x.UserId).NotEmpty();
             RuleFor(x => x.CategoryId).NotEmpty();
             RuleFor(x => x.SellerSKU).NotEmpty();
             RuleFor(x => x.Title).NotEmpty();

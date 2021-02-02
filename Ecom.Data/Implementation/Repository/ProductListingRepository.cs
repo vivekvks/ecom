@@ -25,9 +25,10 @@ namespace Ecom.Data.Implementation.Repository
             return _repository.ExecResult<BaseResult>(StoredProcedure.PRODUCTLISTING_GET, parameters).FirstOrDefault().JsonData;
         }
 
-        public List<int> AddRange(List<ProductListingAddRequest> requests)
+        public List<int> AddRange(List<ProductListingAddRequest> requests, int userId)
         {
             var parameters = _repository.GetJsonParameter(requests);
+            parameters.Add("UserId", userId);
             return _repository.ExecResult<int>(StoredProcedure.PRODUCTLISTING_ADDRANGE, parameters).ToList();
         }
 

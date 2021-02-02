@@ -27,9 +27,9 @@ namespace Ecom.Service
 
             return _productListingRepository.Get(listingText);
         }
-        public List<int> AddRange(List<ProductListingAddRequest> requests)
+        public List<int> AddRange(List<ProductListingAddRequest> requests, int userId)
         {
-            return _productListingRepository.AddRange(requests);
+            return _productListingRepository.AddRange(requests, userId);
         }
 
         public void Update(ProductListingUpdateRequest request)
@@ -56,18 +56,18 @@ namespace Ecom.Service
                 {
                     filters = JsonConvert.DeserializeObject<List<FacetFilter>>(filter);
                 }
-                catch 
+                catch
                 {
                     throw new Exception("Invalid Filter Value");
                 }
 
-                if (filters.Any(x=> x.Value == null || x.Value.Count() == 0))
+                if (filters.Any(x => x.Value == null || x.Value.Count() == 0))
                     throw new Exception("Master Value 'v' is required");
             }
             else
                 filter = null;
 
-            var dataSets =_productListingRepository.Search(pageSize, pageNumber, searchText, categoryId, filter, includeFacet);
+            var dataSets = _productListingRepository.Search(pageSize, pageNumber, searchText, categoryId, filter, includeFacet);
 
             return new ProductListingFacetSearchResponse()
             {

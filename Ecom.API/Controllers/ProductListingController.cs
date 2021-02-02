@@ -34,7 +34,7 @@ namespace Ecom.API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] ProductListingRequest request)
         {
-            var response = _productListingService.AddRange(request.ProductListings);
+            var response = _productListingService.AddRange(request.ProductListings, _jwtReader.UserId);
             return Ok(new ApiResponse(string.Format(ResponseMessage.ADD_SUCCESS, "ProductListing"), response));
         }
 
